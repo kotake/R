@@ -16,7 +16,7 @@ int main()
 	double *csv_data;
 	csv_data = new double[1000];
 
-	fin.open("test.csv");
+	fin.open("iris.csv");
 
 	char buf;
 
@@ -52,8 +52,11 @@ int main()
 			if(value == "\0")//セルが空の場合0を入れる
 			{ 
 				value = "0";
-			}	
-			csv_data[index] = stod(value);
+			}
+			stringstream ss(value);
+			ss >> csv_data[index];
+			//csv_data[index] = stod(value);
+			
 			index++;
 		}
 		row_num++;
