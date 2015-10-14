@@ -5,7 +5,16 @@
 
 using namespace std;
 
-int main()
+int csv_read(const char *filename);
+
+int main(){
+	const char *fn = "test.csv";
+
+	csv_read(fn);
+	return 0;
+}
+
+int csv_read(const char *filename)
 {
 	ifstream fin;
 	char ch;
@@ -16,7 +25,7 @@ int main()
 	double *csv_data;
 	csv_data = new double[1000];
 
-	fin.open("iris.csv");
+	fin.open(filename);
 
 	char buf;
 
@@ -56,7 +65,7 @@ int main()
 			stringstream ss(value);
 			ss >> csv_data[index];
 			//csv_data[index] = stod(value);
-			
+
 			index++;
 		}
 		row_num++;

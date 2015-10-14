@@ -1,0 +1,1 @@
+/opt/rh/qt48/root/usr/include/QtCore/qconfig-64.h
