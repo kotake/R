@@ -2,7 +2,8 @@
 #include <vector>
 #include <cmath>
 #include <random>
-#include "gnuplot.h"
+//#include "gnuplot.h"
+#include<fstream>
 
 using namespace std;
 
@@ -26,7 +27,17 @@ bool isEqual(vector<int> a, vector<int> b){
   if(a[i]!=b[i]) return false;
   }
   return true;
-  }
+}
+
+void gnuplot()
+{
+	FILE* gnuplot = popen("gnuplot", "w");
+	fprintf(gnuplot, "set term png\n");
+	fprintf(gnuplot, "set output \"result.png\"\n");
+	fprintf(gnuplot, "plot \"out.txt\" index 0, \"\" index 1, \"\" index 2\n");
+	fprintf(gnuplot, "exit");
+	fflush(gnuplot); //バッファを書き出す
+}
 
 //エントリポイント
 int main(){
@@ -110,14 +121,20 @@ int main(){
 	}
 
 	//結果の出力(gnuplot用)
+	ofstream fout;
+	fout.open("out.txt");
 	for(int i=0; i<K; i++){
 		for(int j=0; j<input.size(); j++){
 			if(cluster[j]==i){
-				cout << input[j].x << " " << input[j].y << endl;
+				fout << input[j].x << " " << input[j].y << endl;
 			}
 		}
-		cout << endl << endl; //次のクラスタ
+		fout << endl << endl; //次のクラスタ
 	}
+	fout.close();
+
+	gnuplot();
 
 	return 0;
 }
+
