@@ -2,6 +2,7 @@
 #include<fstream>
 #include<string>
 #include<sstream>
+#include<vector>
 
 using namespace std;
 
@@ -10,7 +11,8 @@ int csv_read(const char *filename);
 int main(){
 	const char *fn = "test.csv";
 
-	csv_read(fn);
+	csv_read(fn);	
+
 	return 0;
 }
 
@@ -88,6 +90,19 @@ int csv_read(const char *filename)
 	}
 
 	fin.close();
+
+
+
+	//csv_data[]をvectorに入れる
+	vector<double> a;
+	a.reserve(index);
+	for(int i=0;i<index;i++){
+		a.push_back(csv_data[i]);
+	}
+
+	for(int i=0;i<index;i++){
+		cout << "a["<<i<<"]address:"<<&a[i]<<" 中身:"<< a[i] << endl;
+	}
 
 	delete [] csv_data;
 	return 0;
