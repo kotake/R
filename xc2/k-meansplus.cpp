@@ -14,6 +14,7 @@ static const double INF = 1000000000.0;
 
 unsigned int index = 0,row_num=0,col_num=0;
 double *csv_data;
+int K = 2; //クラスタ数
 
 //平面ベクトルデータ
 class P{
@@ -22,7 +23,7 @@ class P{
 		P(double a,double b){x = a; y = b;};
 };
 
-vector <P> data;
+//vector <P> data;
 
 int csv_read(const char *filename);
 vector<double> tovec();
@@ -40,7 +41,7 @@ int conb(int n, int r)
 }
 
 int main(){
-	const char *fn = "input.txt";
+	const char *fn = "random.csv";
 
 	//vector<double> csv[100];
 	vector<double> csv;
@@ -57,7 +58,7 @@ int main(){
 	int r = 2;
 	result_num=conb(col_num, r);
 
-	//vector<P> data;
+	vector<P> data;
 	data.reserve(row_num);
 
 	/*for(int i=1;i<;i++){
@@ -115,8 +116,8 @@ int main(){
 			}
 
 
-		//ここからdata[]に対して3つの統計処理を行う
-		kmeans(data);
+			//ここからdata[]に対して3つの統計処理を行う
+			kmeans(data);
 
 
 
@@ -150,7 +151,12 @@ void gnuplot()
 	FILE* gnuplot = popen("gnuplot", "w");
 	fprintf(gnuplot, "set term png\n");
 	fprintf(gnuplot, "set output \"result.png\"\n");
-	fprintf(gnuplot, "plot \"out.txt\" index 0, \"\" index 1, \"\" index 2\n");
+	fprintf(gnuplot, "plot \"out.txt\" ");
+	for(int i=0;i<K;i++){
+		fprintf(gnuplot, "index %d",i);
+		if(i!=K-1) fprintf(gnuplot, ", \"\" ");
+	}
+	fprintf(gnuplot, "\n");
 	fprintf(gnuplot, "exit");
 	fflush(gnuplot); //バッファを書き出す
 }
@@ -163,8 +169,8 @@ void kmeans(const vector<P> &input){
 	//vector<P> input;
 	//double x, y;
 	/*for(int j = 0; j< row_num;j++){
-		input.push_back((P){1,1});
-	}*/
+	  input.push_back((P){1,1});
+	  }*/
 
 
 	for(int j = 0 ; j < row_num ; j++){
@@ -175,7 +181,6 @@ void kmeans(const vector<P> &input){
 
 
 	//Kmeansによるクラスタリング
-	int K = 2; //クラスタ数
 	vector<int> prev_cluster, cluster; //各点のクラスタ番号
 	vector<P> vec_m; //各クラスタの代表ベクトル
 
