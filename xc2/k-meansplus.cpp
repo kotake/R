@@ -43,6 +43,7 @@ int main(){
 	csv_read(fn);
 	csv.reserve(index);
 
+	//ベクター型のcsvというコンテナに入力データcsv_data[]を入れる
 	csv = tovec();
 
 	//配列を何個用意しますか？xC2個
