@@ -22,12 +22,15 @@ class P{
 		P(double a,double b){x = a; y = b;};
 };
 
+vector <P> data;
 
 int csv_read(const char *filename);
 vector<double> tovec();
 double dist(P a, P b);
 bool isEqual(vector<int> a, vector<int> b);
+void kmeans(const vector<P> &input);
 void gnuplot();
+
 
 int conb(int n, int r)
 {
@@ -37,7 +40,7 @@ int conb(int n, int r)
 }
 
 int main(){
-	const char *fn = "test.csv";
+	const char *fn = "input.txt";
 
 	//vector<double> csv[100];
 	vector<double> csv;
@@ -54,7 +57,7 @@ int main(){
 	int r = 2;
 	result_num=conb(col_num, r);
 
-	vector<P> data;
+	//vector<P> data;
 	data.reserve(row_num);
 
 	/*for(int i=1;i<;i++){
@@ -93,7 +96,7 @@ int main(){
 
 	do{
 		//cout << "[ " << order[0];
-		for(unsigned int i=0, j=0;i < r ;i=i+2,j++){
+		for(unsigned int i=0 ; i < r ; i = i + 2){
 			//data[i].x = csv[j];
 			//j++;
 			//data[i].y = csv[j];
@@ -101,18 +104,26 @@ int main(){
 			cout << "[ "<<order[i] << ", "<<order[i+1]<< " ]" <<endl;
 
 
-			//[1,2]
-			for(int k= 0;k<row_num;k++){
-				data[k].x = csv[k*col_num+order[i]];
-				data[k].y = csv[k*col_num+order[i+1]];
+			//data[行数]に全組み合わせで値入れる
+			for(int j = 0 ; j < row_num ; j++){
+				data[j].x = csv[j * col_num + order[i]];
+				data[j].y = csv[j * col_num + order[i+1]];
 			}
 
-			for(int k =0;k<row_num;k++){
-				cout <<"data["<< k <<"]:{"<<data[k].x <<","<<data[k].y<<"}"<<endl;
+			for(int j = 0 ; j < row_num ; j++){
+				cout <<"data["<< j <<"]:{"<<data[j].x <<","<<data[j].y<<"}"<<endl;
 			}
+
+
+		//ここからdata[]に対して3つの統計処理を行う
+		kmeans(data);
+
+
+
+
 		}
 		cout <<endl;
-	}while(next_combination(order.begin(),order.begin()+r, order.end()));//csvの中の順番が変わる
+	}while(next_combination(order.begin(),order.begin()+r, order.end()));//csv[]の中の順番が変わる
 
 
 
@@ -145,39 +156,55 @@ void gnuplot()
 }
 
 //エントリポイント
-int kmeans(){
+void kmeans(const vector<P> &input){
 
+	cout << "kmeans start"<<endl;
 	//入力データ
-	vector<P> input;
-	double x, y;
-	while(cin >> x >> y){
-		input.push_back((P){x,y});
+	//vector<P> input;
+	//double x, y;
+	/*for(int j = 0; j< row_num;j++){
+		input.push_back((P){1,1});
+	}*/
+
+
+	for(int j = 0 ; j < row_num ; j++){
+		cout <<"input["<< j <<"]:{"<<input[j].x <<","<<input[j].y<<"}"<<endl;
 	}
 
+
+
+
 	//Kmeansによるクラスタリング
-	int K = 3; //クラスタ数
+	int K = 2; //クラスタ数
 	vector<int> prev_cluster, cluster; //各点のクラスタ番号
 	vector<P> vec_m; //各クラスタの代表ベクトル
 
-	for(int i=0; i<input.size(); i++){
+	for(int i=0; i</*input.size()*/row_num; i++){
 		prev_cluster.push_back(0);
 		cluster.push_back(-1);
 	}
+	cout <<"input.size():"<< input.size() <<endl;
+
+	cout<< "cluster 準備"<<endl;
 
 	random_device rnd;     // 非決定的な乱数生成器
 	mt19937 mt(rnd());            // メルセンヌ・ツイスタの32ビット版、引数は初期シード
 	for (int i = 0; i < K; ++i) {
-		int rand = mt()%input.size();
+		int rand = mt()%/*input.size()*/row_num;
+
+		cout << "mazi?"<<endl;
 
 		vec_m.push_back(P(0,0));
 		vec_m[i]=input[rand];
 	}
 
+	cout<< "初期値ランダムに選択完了"<<endl;
+
 	while(!isEqual(prev_cluster, cluster)){
 		prev_cluster = cluster;
 
 		//入力ベクトルの分割
-		for(int i=0; i<input.size(); i++){
+		for(int i=0; i</*input.size()*/row_num; i++){
 			int argmax_cluster = -1;
 			double argmax_value = INF;
 			//一番類似度の高い(距離が一番近い)クラスタにする
@@ -195,7 +222,7 @@ int kmeans(){
 			int cnt = 0;
 			vec_m[i].x = 0;
 			vec_m[i].y = 0;
-			for(int j=0; j<input.size(); j++){
+			for(int j=0; j</*input.size()*/row_num; j++){
 				if(cluster[j]==i){
 					vec_m[i].x += input[j].x;
 					vec_m[i].y += input[j].y;
@@ -209,13 +236,17 @@ int kmeans(){
 		}
 	}
 
+	cout << "aaaaaaaaa"<< endl;
+
 	//結果の出力(gnuplot用)
 	ofstream fout;
 	fout.open("out.txt");
 	for(int i=0; i<K; i++){
-		for(int j=0; j<input.size(); j++){
+		for(int j=0; j</*input.size()*/row_num; j++){
 			if(cluster[j]==i){
 				fout << input[j].x << " " << input[j].y << endl;
+				cout << "書き込む内容"<<endl;
+				cout << input[j].x << " " << input[j].y <<endl;
 			}
 		}
 		fout << endl << endl; //次のクラスタ
@@ -224,7 +255,6 @@ int kmeans(){
 
 	gnuplot();
 
-	return 0;
 }
 
 int csv_read(const char *filename)

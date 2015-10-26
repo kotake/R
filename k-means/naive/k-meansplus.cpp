@@ -54,6 +54,9 @@ int main(){
 	vector<int> prev_cluster, cluster; //各点のクラスタ番号
 	vector<P> vec_m; //各クラスタの代表ベクトル
 
+
+	//cout << input.size()<<endl;
+
 	for(int i=0; i<input.size(); i++){
 		prev_cluster.push_back(0);
 		cluster.push_back(-1);
