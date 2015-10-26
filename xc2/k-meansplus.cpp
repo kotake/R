@@ -7,6 +7,8 @@
 #include <string>
 #include <algorithm>
 #include "next_permutation.hpp"
+#include <numeric>
+#include <math.h>
 
 using namespace std;
 
@@ -32,7 +34,7 @@ double dist(P a, P b);
 bool isEqual(vector<int> a, vector<int> b);
 void kmeans(const vector<P> &input);
 void gnuplot();
-
+void sokan(const vector<P> &input);
 
 int conb(int n, int r)
 {
@@ -42,7 +44,7 @@ int conb(int n, int r)
 }
 
 int main(){
-	const char *fn = "random.csv";
+	const char *fn = "iris.csv";
 
 	vector<double> csv;
 
@@ -96,6 +98,7 @@ int main(){
 			//kmeans関数内でgnuplotまでやってる
 			rab_x=order[i];
 			rab_y=order[i+1];
+			sokan(data);
 			kmeans(data);
 
 		}
@@ -136,7 +139,34 @@ void gnuplot()
 	fprintf(gnuplot, "\n");
 	fprintf(gnuplot, "exit");
 	fflush(gnuplot); //バッファを書き出す
-	cout << rabel[rab_x]<<"result" << sheet_num << ".png書き込み完了"<<endl;
+	cout << "result" << sheet_num << ".png書き込み完了"<<endl;
+}
+
+void sokan(const vector<P> &input){
+	cout << "sokan start"<<endl;
+
+	double r=0;
+	double x_avg=0,y_avg=0;
+	double chi=0,mo1=0,mo2=0;
+	vector<double> tmp_x,tmp_y;
+	for(int i=0;i<row_num;i++){
+		tmp_x.push_back(input[i].x);
+	}
+	x_avg = accumulate(tmp_x.begin(),tmp_x.end(),0.0)/(double)row_num;
+	for(int i=0;i<row_num;i++){
+		tmp_y.push_back(input[i].y);
+	}
+	y_avg = accumulate(tmp_y.begin(),tmp_y.end(),0.0)/(double)row_num;
+
+	cout << x_avg <<","<< y_avg << endl;
+
+	for(int i =0;i < row_num;i++){
+		chi += (input[i].x - x_avg) * (input[i].y - y_avg);
+		mo1 += pow((input[i].x - x_avg),2.0);
+		mo2 += pow((input[i].y - y_avg),2.0);
+	}
+	r = chi / (sqrt(mo1)*sqrt(mo2));
+	cout <<"相関係数:"<<  r << endl;
 }
 
 //エントリポイント
@@ -275,7 +305,7 @@ int csv_read(const char *filename)
 
 			index++;
 		}
-	//	row_num++;
+		//	row_num++;
 	}
 
 	if(index%row_num!=0)

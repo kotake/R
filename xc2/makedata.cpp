@@ -21,9 +21,9 @@ int main(){
 	for(int i=0;i<row_num;i++){
 		for(int j=0;j< col_num;j++){
 
-			double rand = (mt()%1000000000)/10000000.0;
+			double rand = (mt()%100000)/1000.0;
 			
-			cout << setprecision(10) << rand;
+			cout << setprecision(6) << rand;
 			if(j!=col_num-1)cout << ", ";
 		}
 		cout << endl;
