@@ -5,6 +5,8 @@
 #include <sstream>
 #include <fstream>
 #include <string>
+#include <algorithm>
+#include "next_permutation.hpp"
 
 using namespace std;
 
@@ -49,23 +51,26 @@ int main(){
 	//配列を何個用意しますか？xC2個
 	//xC2個のVectorに突っ込んでいく
 	int result_num;
-	result_num=conb(col_num, 2);
+	int r = 2;
+	result_num=conb(col_num, r);
 
 	vector<P> data;
+	data.reserve(row_num);
 
-	for(int n=1;n <= result_num;n++){
-		//vector<double> data[n];
-		//data[n].reserve(row_num*2);
+	/*for(int i=1;i<;i++){
+	//vector<double> data[n];
+	//data[n].reserve(row_num*2);
 
-		//ここを治す
-		for(int i=0;i<;i++){
-			//data[n].x.push_back(csv[i]);
-			//data[n].y.push_back(csv[i+n]);
-			deta.push_back(P(csv[i], csv[i+1]));
-		}
-	}
+	//ここを治す
+	//for(int i=0;i<;i++){
+	//data[n].x.push_back(csv[i]);
+	//data[n].y.push_back(csv[i+n]);
+	//data.push_back(P(csv[i], csv[i+1]));
+	//}
+	//data.push_back(0);
+	//data.
 
-	
+	}*/
 
 	cout<<"----------------"<<endl;
 	for(int i = 0;i<row_num;i++){
@@ -74,8 +79,42 @@ int main(){
 		}
 		cout << endl;
 	}
-	
+
 	cout << "conb:" << result_num<<endl;
+
+
+	cout << "ここまできてる？"<<endl;
+
+	//comb
+	vector<int> order;
+	for(int i=0;i< col_num;i++){
+		order.push_back(i);
+	}
+
+	do{
+		//cout << "[ " << order[0];
+		for(unsigned int i=0, j=0;i < r ;i=i+2,j++){
+			//data[i].x = csv[j];
+			//j++;
+			//data[i].y = csv[j];
+			//cout << "[" << data[i].x << " , " << data[i].y << "]" << endl;
+			cout << "[ "<<order[i] << ", "<<order[i+1]<< " ]" <<endl;
+
+
+			//[1,2]
+			for(int k= 0;k<row_num;k++){
+				data[k].x = csv[k*col_num+order[i]];
+				data[k].y = csv[k*col_num+order[i+1]];
+			}
+
+			for(int k =0;k<row_num;k++){
+				cout <<"data["<< k <<"]:{"<<data[k].x <<","<<data[k].y<<"}"<<endl;
+			}
+		}
+		cout <<endl;
+	}while(next_combination(order.begin(),order.begin()+r, order.end()));//csvの中の順番が変わる
+
+
 
 	return 0;
 }

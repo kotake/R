@@ -21,6 +21,7 @@ int main(){
 		std::cout << "Pdata["<<i<<"]:{" << Pdata[i].x <<","<< Pdata[i].y << "}" << std::endl;
 	}
 	// 全ての組み合わせを出力
+
 	do{
 		for(unsigned int i=0,j=0; j<r; i++,j++){
 			//Pdata[0].x = data[0];
@@ -32,7 +33,6 @@ int main(){
 			std::cout << "[ " << Pdata[i].x << ", " << Pdata[i].y << " ]" << std::endl;
 		}
 	}while(next_combination(data.begin(), data.begin()+r, data.end()));
-
 
 	std::cout << "--------------------------" << std::endl;
 
