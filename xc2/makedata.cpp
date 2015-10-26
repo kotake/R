@@ -6,7 +6,7 @@ using namespace std;
 
 int main(){
 
-	int col_num = 10,row_num = 100;
+	int col_num = 10,row_num = 1000;
 	char mozi = 'a';
 		
 	for(int i =0;i<col_num;i++,mozi++){

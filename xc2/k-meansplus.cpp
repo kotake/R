@@ -14,8 +14,10 @@ static const double INF = 1000000000.0;
 
 unsigned int index = 0,row_num=0,col_num=0;
 double *csv_data;
+string *rabel;
 int K = 3; //クラスタ数
 int sheet_num = 0;
+int rab_x=0, rab_y=0;
 
 //平面ベクトルデータ
 class P{
@@ -45,6 +47,7 @@ int main(){
 	vector<double> csv;
 
 	csv_read(fn);
+	cout<< "csv読み込み完了"<< endl;
 	csv.reserve(index);
 
 	//ベクター型のcsvというコンテナに入力データcsv_data[]を入れる
@@ -71,6 +74,7 @@ int main(){
 
 	//comb
 	vector<int> order;
+
 	for(int i=0;i< col_num;i++){
 		order.push_back(i);
 	}
@@ -79,7 +83,7 @@ int main(){
 		//cout << "[ " << order[0];
 		for(unsigned int i=0 ; i < r ; i = i + 2){
 
-			cout << "[ "<<order[i] << ", "<<order[i+1]<< " ]" <<endl;
+			cout << "[ "<<order[i] << "行目と"<<order[i+1]<< "行目 ]" <<endl;
 
 
 			//data[行数]に全組み合わせで値入れる
@@ -90,6 +94,8 @@ int main(){
 
 			//ここからdata[]に対して3つの統計処理を行う
 			//kmeans関数内でgnuplotまでやってる
+			rab_x=order[i];
+			rab_y=order[i+1];
 			kmeans(data);
 
 		}
@@ -120,6 +126,8 @@ void gnuplot()
 	FILE* gnuplot = popen("gnuplot", "w");
 	fprintf(gnuplot, "set term png\n");
 	fprintf(gnuplot, "set output \"graph/result%02d.png\"\n",sheet_num);
+	fprintf(gnuplot, "set xl \"%s\"\n",rabel[rab_x].c_str());
+	fprintf(gnuplot, "set yl \"%s\"\n",rabel[rab_y].c_str());
 	fprintf(gnuplot, "plot \"output/out%d.txt\" ",sheet_num);
 	for(int i=0;i<K;i++){
 		fprintf(gnuplot, "index %d",i);
@@ -128,7 +136,7 @@ void gnuplot()
 	fprintf(gnuplot, "\n");
 	fprintf(gnuplot, "exit");
 	fflush(gnuplot); //バッファを書き出す
-	cout << "result" << sheet_num << ".png書き込み完了"<<endl;
+	cout << rabel[rab_x]<<"result" << sheet_num << ".png書き込み完了"<<endl;
 }
 
 //エントリポイント
@@ -212,19 +220,19 @@ void kmeans(const vector<P> &input){
 
 int csv_read(const char *filename)
 {
-	ifstream fin;
+	ifstream fin,row_num_check;
 
-	string *rabel;
 	rabel = new string[100];
 
 	fin.open(filename);
 	if(!fin){
 		cout << "ファイルがオープンできません。"<<endl;
 	}
+	row_num_check.open(filename);
 
 	char buf;
 
-	string line;
+	string line,temp;
 
 	//1行目をrabelとして読み込む
 	getline(fin,line);
@@ -245,7 +253,12 @@ int csv_read(const char *filename)
 	cout<<"col_num:"<<col_num<<endl;;
 	index = 0;
 
-	csv_data = new double[1000];
+	//入力ファイルの行数確認
+	while(getline(row_num_check,temp)){
+		row_num++;
+	}
+	row_num= row_num-1;
+	csv_data = new double[col_num*(row_num)];
 
 	//2行目から読み込む
 	while(getline(fin, line)){
@@ -262,7 +275,7 @@ int csv_read(const char *filename)
 
 			index++;
 		}
-		row_num++;
+	//	row_num++;
 	}
 
 	if(index%row_num!=0)
