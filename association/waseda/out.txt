@@ -1,0 +1,32 @@
+Saisho-shijido = 0.900000 Saisho-kakushindo = 0.900000 
+item_number=128
+transaction_number=8124
+ first_step_item_kouho_number =128 
+ first_step_large_item_number=4
+ second_step_item_kouho_number＝6
+ 2th_step_large_item_number=4
+ 3th_step_item_kouho_syugousuu=1
+ 3th_step_large_item_number=1
+ 4th_step_item_kouho_syugousuu=0
+ 4th_step_large_item_number=0
+Goukeikouhoaitemusuu＝135 goukei＝9
+
+ Saisho-kakushindo wo mitasu rule
+zyouken-bu -> ketsuron-bu = [shijido, kakushindo] 
+ 36 → 90 =[0.974151,1.000000]
+ 90 → 36 =[0.974151,0.974151]
+ 36 → 94 =[0.973166,0.998989]
+ 94 → 36 =[0.973166,0.997728]
+ 90 → 94 =[0.975382,0.975382]
+ 94 → 90 =[0.975382,1.000000]
+ 90 → 97 =[0.921713,0.921713]
+ 97 → 90 =[0.921713,1.000000]
+ 36 → 90  94 =[0.973166,0.998989]
+ 90 → 36  94 =[0.973166,0.973166]
+ 94 → 36  90 =[0.973166,0.997728]
+ 36  90 → 94 =[0.973166,0.998989]
+ 36  94 → 90 =[0.973166,1.000000]
+ 90  94 → 36 =[0.973166,0.997728]
+
+Saisho-kakushindo = 14  
+Heikin-shijido = 0.966273 Heikin-kakushindo = 0.988183
