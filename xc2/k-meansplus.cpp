@@ -17,9 +17,10 @@ static const double INF = 1000000000.0;
 unsigned int index = 0,row_num=0,col_num=0;
 double *csv_data;
 string *rabel;
-int K = 3; //クラスタ数
+const int K = 3; //クラスタ数
 int sheet_num = 0;
 int rab_x=0, rab_y=0;
+double SD[K];
 
 //平面ベクトルデータ
 class P{
@@ -85,7 +86,7 @@ int main(){
 		//cout << "[ " << order[0];
 		for(unsigned int i=0 ; i < r ; i = i + 2){
 
-			cout << "[ "<<order[i] << "行目と"<<order[i+1]<< "行目 ]" <<endl;
+			cout << "[ "<<order[i] << "列目と"<<order[i+1]<< "列目 ]" <<endl;
 
 
 			//data[行数]に全組み合わせで値入れる
@@ -100,6 +101,10 @@ int main(){
 			rab_y=order[i+1];
 			sokan(data);
 			kmeans(data);
+			
+			for(int i=0;i<K;i++){
+				cout << "クラスタ["<<i<<"]の標準偏差:"<< SD[i] << endl;
+			}
 
 		}
 		cout <<endl;
@@ -232,6 +237,7 @@ void kmeans(const vector<P> &input){
 	stringstream output_name;
 	output_name << "output/out" << sheet_num << ".txt";
 
+	//クラスタごとに座標をファイルに書き込み
 	ofstream fout;
 	fout.open(output_name.str());
 	for(int i=0; i<K; i++){
@@ -243,6 +249,28 @@ void kmeans(const vector<P> &input){
 		fout << endl << endl; //次のクラスタ
 	}
 	fout.close();
+
+	//クラスタごとの標準偏差を計算
+	for(int i=0;i<K;i++){
+		SD[i] = 0;
+	}
+	for(int i=0;i<K;i++){
+		double avg=0,tmp=0;
+		int count=0;
+		for(int j=0;j<row_num;j++){
+			if(cluster[j]==i){
+				tmp += dist(input[j],vec_m[i]);
+				count++;
+			}
+		} 
+		avg = tmp/(double)count;
+		tmp=0;
+		for(int j=0;j<row_num;j++){
+			double hensa = dist(input[j],vec_m[i])-avg;
+			tmp += hensa * hensa;
+			SD[i] = sqrt(tmp/(double)count);
+		}
+	}
 
 	gnuplot();
 
