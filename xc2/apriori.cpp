@@ -119,77 +119,25 @@ void C1(double *input)
 	out.close();
 	*/
 	//csv_dataを読み込む
-	for(int i=0;i<index;i++){
-	//	cout << "input["<< i <<"]:"<< input[i] <<endl;
-	}
-	//cout << endl;
-
 	//岡システム
-	ifstream ifs("iris.csv");
-	string str;
-	int count = 0;
-	int i;
-	double sum;
-	double avl;
-
-	ofstream ofs("transaction.txt");
-
-	if (ifs.fail())
-	{
-		cerr << "失敗" << endl;
-		return -1;
-	}
-
-	getline(ifs,str);
-	string tmp;
-	istringstream stream(str);
-	while(getline(stream,tmp,','))
-	{
-		count++;
-	}
-
-	cout << count << endl; 
-	double youso[count];
-	string label[count];
-
-	string tmp2;
-	istringstream stream2(str);
-	i = 0;
-	while(getline(stream2,tmp2,','))
-	{
-		label[i] = tmp2;
-		i++;
-	}
-
-	while(getline(ifs,str))
-	{
-		i = 0;
-		sum = 0;
-		string tmp;
-		istringstream stream(str);
-		while(getline(stream,tmp,','))
-		{
-			stringstream ss;
-			ss << tmp;
-			ss >> youso[i];
-			i++;
+	double sum,avg;
+	ofstream ofs("association/transaction.txt");
+	for(int i=0;i<row_num;i++){
+		//1行ごとに処理
+		sum =0;
+		for(int j=0;j<col_num;j++){
+			sum += input[i*col_num+j];
 		}
-
-		for (i = 0; i < count; i++) {
-			sum += youso[i];
-		}
-
-		avl = sum / count;
-		cout << avl << endl; 
-		for (i = 0; i < count; i++) {
-			if(youso[i] >= avl){
-				//cout << "true" << endl;        
-				ofs << label[i];
-				ofs << " ";
+		avg = sum/col_num;
+		for(int j=0;j<col_num;j++){
+			if(input[i*col_num+j]>avg){
+				ofs << rabel[j] << " ";
 			}
 		}
-		ofs << "-1" << endl;
+		ofs<<endl;
 	}
+	ofs.close();
+
 	//exit(0);
 }
 
