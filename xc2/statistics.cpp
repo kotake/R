@@ -7,7 +7,7 @@ static const double INF = 1000000000.0;
 unsigned int index = 0,row_num=0,col_num=0;
 double *csv_data;
 string *rabel;
-const int K = 3; //クラスタ数
+const int K = 2; //クラスタ数
 int sheet_num = 0;
 int rab_x=0, rab_y=0;
 double SD[K];
@@ -22,6 +22,8 @@ void gnuplot();
 void sokan(const vector<P> &input);
 void aso(double *input);
 
+
+ofstream fout;//sokan出力用
 
 int main(){
 	const char *fn = "iris.csv";
@@ -44,14 +46,14 @@ int main(){
 	vector<P> data;
 	data.reserve(row_num);
 
-/*	cout<<"----------------"<<endl;
-	for(int i = 0;i<row_num;i++){
+	/*	cout<<"----------------"<<endl;
+		for(int i = 0;i<row_num;i++){
 		for(int j=0;j<col_num;j++){
-			cout << csv[i*col_num+j] <<" ";
+		cout << csv[i*col_num+j] <<" ";
 		}
 		cout << endl;
-	}
-*/
+		}
+		*/
 	cout << "conb:" << result_num<<endl;
 
 	//comb
@@ -59,6 +61,13 @@ int main(){
 	for(int i=0;i< col_num;i++){
 		order.push_back(i);
 	}
+
+	//sokan用ファイルポインタ
+	stringstream output_name;
+	output_name<< "correlation/output.txt";
+	fout.open(output_name.str());
+
+
 
 	do{
 		//cout << "[ " << order[0];
@@ -79,15 +88,17 @@ int main(){
 			rab_y=order[i+1];
 			sokan(data);
 			kmeans(data);
-			for(int i=0;i<index;i++){
-				//cout << csv_data[i]<< endl;
-			}
-			aso(csv_data);
-			
+
 		}
 		cout <<endl;
 		sheet_num++;
 	}while(next_combination(order.begin(),order.begin()+r, order.end()));//csv[]の中の順番が変わる
+
+	cout <<"-----------------------------------------"<<endl;
+	cout << "相関とk-means終了"<<endl<<endl;
+	aso(csv_data);
+
+	fout.close();
 
 	delete [] csv_data;
 	return 0;
@@ -134,11 +145,6 @@ void gnuplot()
 void sokan(const vector<P> &input){
 	cout << "sokan start"<<endl;
 
-	stringstream output_name;
-	output_name<< "correlation/output.txt";
-	ofstream fout;
-	fout.open(output_name.str());
-
 	double r=0;
 	double x_avg=0,y_avg=0;
 	double chi=0,mo1=0,mo2=0;
@@ -160,8 +166,7 @@ void sokan(const vector<P> &input){
 		mo2 += pow((input[i].y - y_avg),2.0);
 	}
 	r = chi / (sqrt(mo1)*sqrt(mo2));
-	fout <<"相関係数:"<<  r << endl;
-	fout.close();
+	fout <<"相関係数:"<<  r << endl<<endl;
 }
 
 //エントリポイント

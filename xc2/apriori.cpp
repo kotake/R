@@ -9,8 +9,9 @@ unsigned int row = 0;
 map<vector<string>, int> C;
 map<vector<string>, int> L;
 
-char filename[] = "input.txt";
-ofstream ofs("output.txt");
+//char filename[] = "input.txt";
+ofstream ofs("association/output.txt");
+int num=2;
 
 void aso(double *input)
 {
@@ -19,7 +20,6 @@ void aso(double *input)
 	L.clear();
 
 	bool mv=true;
-	int num=2;
 	while(true)
 	{
 		if (mv)
@@ -43,38 +43,76 @@ void aso(double *input)
 		{
 			//ofs<<"else" <<endl;
 			generate_C();
-			if(C.size()==0)
-				break;
+			
+			if(C.size()==0)	break;
 			//cout<<"\nC"<<num<<"(要素からすべての組み合わせを表示)\n";
 			//output(C);
 			prune();
-			if (C.size()==0)
-			{
-				break;
-			}
+			
+			if (C.size()==0) break;
 			//cout<<"\nC"<<num<<" after prune(要素を枝切り) \n";
 			//output(C);
 			scan_D();
 			//cout<<"\nC"<<num<<"after scaning dataset(枝切りした要素だけ回数数える)\n";
 			//output(C);
 			generate_L();
-			if (L.size()==0)
-			{
-				break;
-			}
+			
+			if (L.size()==0) break;
 			ofs<<"\nL"<<num<<"(C"<<num<<"を基準で枝切り後)\n";
+			cout<<"\nL"<<num<<"(C"<<num<<"を基準で枝切り後)\n";
 			output(L);
 			num++;
 		}
 		//ofs<<"-----------------------" <<endl;
 	}
+	ofs.close();
 	cout << "finish." <<endl;
 }
 
 void C1(double *input)
 {
+	
+	/*
+	   stringstream output_name;
+	   output_name << "association/temp/out" << sheet_num << ".txt";
+	   ofstream out;
+	   out.open(output_name.str());
+	   out << rabel[order[0]]<<" "<<rabel[order[1]];
+	   out << " -1" << endl;
+
+	   vector<double> tmp;
+	   for(int i=0;i<row_num;i++){
+	   tmp[i].push_back(input[i]);
+	   tmp[i].push_back(input[i]);
+	//copy(input.begin(), input.end(), back_inserter(tmp) );
+	}
+
+	out.close();
+	*/
+	//csv_dataを読み込む
+	//岡システム
+	double sum,avg;
+	ofstream ofs2("association/transaction.txt");
+	for(int i=0;i<row_num;i++){
+		//1行ごとに処理
+		sum =0;
+		for(int j=0;j<col_num;j++){
+			sum += input[i*col_num+j];
+		}
+		avg = sum/col_num;
+		for(int j=0;j<col_num;j++){
+			if(input[i*col_num+j]>avg){
+				ofs2 << rabel[j] << " ";
+			}
+		}
+		ofs2 <<"-1"<<endl;
+	}
+	ofs2.close();
+
+	//exit(0);
+	row = 0;	
 	ifstream fin;
-	fin.open(filename);
+	fin.open("association/transaction.txt");
 	if(!fin)
 	{
 		ofs <<"Input file opening error\n";
@@ -101,44 +139,6 @@ void C1(double *input)
 	}
 	fin.close();
 
-	/*
-	   stringstream output_name;
-	   output_name << "association/temp/out" << sheet_num << ".txt";
-	   ofstream out;
-	   out.open(output_name.str());
-	   out << rabel[order[0]]<<" "<<rabel[order[1]];
-	   out << " -1" << endl;
-
-	   vector<double> tmp;
-	   for(int i=0;i<row_num;i++){
-	   tmp[i].push_back(input[i]);
-	   tmp[i].push_back(input[i]);
-	//copy(input.begin(), input.end(), back_inserter(tmp) );
-	}
-
-	out.close();
-	*/
-	//csv_dataを読み込む
-	//岡システム
-	double sum,avg;
-	ofstream ofs("association/transaction.txt");
-	for(int i=0;i<row_num;i++){
-		//1行ごとに処理
-		sum =0;
-		for(int j=0;j<col_num;j++){
-			sum += input[i*col_num+j];
-		}
-		avg = sum/col_num;
-		for(int j=0;j<col_num;j++){
-			if(input[i*col_num+j]>avg){
-				ofs << rabel[j] << " ";
-			}
-		}
-		ofs<<endl;
-	}
-	ofs.close();
-
-	//exit(0);
 }
 
 
@@ -180,27 +180,64 @@ void generate_C()
 {
 	//clean(C);
 	C.clear();
+	int i=0,j=0,z=0;
 	for(map<vector<string>, int>::iterator ii=L.begin();ii!=L.end();ii++)
 	{
-
+		cout <<"-------------------"<<endl;
+		cout <<" i = "<<i<<endl;
 		for(map<vector<string>, int>::iterator jj=ii;jj!=L.end();jj++)
 		{
-			if(jj==ii)
+			cout <<"   j = "<<j<<endl;
+			if(jj==ii){
+				j++;
 				continue;
+			}
 			vector<string> a,b;
 			a.clear();
 			b.clear();
 			a=ii->first;//
 			b=jj->first;//ここでも一応push_backしてる
+
+			for(int k=0;k<a.size();k++){
+				cout<<"a["<< k <<"]:"<< a[k] << endl;
+			}
+			for(int k=0;k<b.size();k++){
+				cout<<"b["<< k <<"]:"<< b[k] << endl;
+			}
+
+
 			if(check_compatibility(a,b))	
 			{
+				cout<< "a.push_back(b.back())"<<endl;
 				a.push_back(b.back());
+
+				for(int k=0;k<a.size();k++){
+					cout<<"a["<<k<<"]:"<< a[k] << endl;
+				}
+				for(int k=0;k<b.size();k++){
+					//cout<<"b["<<k<<"]:"<< b[k] <<"を入れた" <<endl;
+				}
+
+
 				sort(a.begin(), a.end());
-				C[a]=0;
-				//cout<<"if"<<endl;
+				C[a]=0;//aのkeyのところのvalueを0にする
+				z=0;
+				//map<vector<string>,int>::iterator kk=C.begin();
+				for(map<vector<string>,int>::iterator kk=C.begin();z<num&&kk!=C.end();kk++){
+				//for(int k=0;k<a.size();k++){
+					cout << "C["<< kk->first[z] << "]:" << kk->second <<endl;
+					z++;
+				//}
+				}
+
+				cout << "if a["<<i<<"]=b["<<j<<"] true"<<endl<<endl;
 			}
+			else cout<<"else i="<<i<<" j="<<j<<endl;//枝切りした場合こっちにくる
 			//cout <<"a" <<endl;
+			j++;
 		}
+		j = 0;
+		i++;
 	}
 
 
@@ -268,7 +305,7 @@ void scan_D()
 	cout << "scan_D" <<endl;
 
 	ifstream fin;
-	fin.open(filename);
+	fin.open("association/transaction.txt");
 	if(!fin)
 	{
 		cout<<"Input file opening error\n";
