@@ -1,0 +1,6 @@
+suppressMessages(library(arules))
+suppressMessages(iris.tran<-read.transactions(file='transaction.txt',sep=',',format='basket'))
+capture.output(iris.ap<-apriori(iris.tran))
+suppressMessages(sink(file = "foo.txt"))
+suppressWarnings(inspect(head(SORT(iris.ap, by = "support"),n=6)))
+suppressMessages(sink())
