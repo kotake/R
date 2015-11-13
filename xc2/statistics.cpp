@@ -96,6 +96,7 @@ int main(){
 
 	cout <<"-----------------------------------------"<<endl;
 	cout << "相関とk-means終了"<<endl<<endl;
+
 	aso(csv_data);
 
 	fout.close();
@@ -359,4 +360,40 @@ vector<double> tovec()
 	}
 
 	return vecsv_data;
+}
+
+
+void aso(double *input){
+	
+	//岡システム
+	double sum,avg;
+	ofstream ofs2("association/transaction.txt");
+	for(int i=0;i<row_num;i++){
+		//1行ごとに処理
+		sum =0;
+		for(int j=0;j<col_num;j++){
+			sum += input[i*col_num+j];
+		}
+		avg = sum/col_num;
+		for(int j=0;j<col_num;j++){
+			if(input[i*col_num+j]>avg){
+				ofs2 << rabel[j] << ",";
+			}
+		}
+		ofs2 << endl;
+	}
+	ofs2.close();
+
+
+	FILE *R = popen("R --vanilla --save --slave","w");
+	fprintf(R, "suppressMessages(library(\"arules\"))\n");
+	fprintf(R, "iris.tran<-read.transactions(file='association/transaction.txt',sep=',',format='basket')\n");
+	fprintf(R, "invisible(capture.output(iris.ap<-apriori(iris.tran)))\n");
+	fprintf(R, "sink(file = \"association/foo.txt\")\n");
+	fprintf(R, "suppressWarnings(inspect(head(SORT(iris.ap, by = \"support\"),n=6)))\n");
+	fprintf(R, "sink()\n");
+	fprintf(R, "q(\"no\")\n");
+	fflush(R);
+	pclose(R);
+
 }
