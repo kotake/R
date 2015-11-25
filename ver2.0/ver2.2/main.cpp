@@ -1,6 +1,4 @@
 #include "head.hpp"
-#include <limits.h>
-#include<string.h>
 
 int main(){
 
@@ -95,77 +93,10 @@ int main(){
 	sokanf.close();
 	sdf.close();
 
-	//全部計算終わってからじゃないとフィルタリングはできない
-	for(int i=0;i<result_num;i++){
-		for(int j=0;j<K;j++){
-			//filter(level, SD[i][j],i);
-		}
-	}
-
-/*
-	for(int i=0;fil_name[i]!="\n";i++){
-		void filter(fil_name[i]);
-		}
-		*/
-
-	if(mkdir("after_fil",777)==0)
-		cout << "フォルダafter_filを作成しました"<<endl;
-
-	//filterフォルダ内の全ファイル一覧取得
-	FILE *ls;
-	ls = popen("ls filter/","r");
-	vector<string> fil_fn;
-	char buf[256];//一行を格納 //コマンドライン出力をゲット
-	char *c;
-	while(c = fgets(buf,sizeof(buf), ls)){
-		strtok(buf,"\n\0");
-		fil_fn.push_back(buf);
-	}
-
-	//filter1ファイルごとの処理
-	for(int i=0; i < fil_fn.size(); i++){
-		fil_fn[i] = "filter/" + fil_fn[i];
-
-		//1ファイルポインタfilの行をfil_fに読み込む
-		ifstream fil;
-		fil.open(fil_fn[i]);//filterフォルダ内のファイルポインタ取得
-		if(!fil){
-			cout <<"dont open file"<<endl;
-		}
-
-		string line;
-		vector<string> fil_f;//１ファイル内のコマンド行数ごとに格納される
-		
-		//filter読み込む
-		while(getline(fil, line)){
-			fil_f.push_back(line);
-		}
-		fil.close();
-
-		//読み込んだ行をパイプにつなぐ
-		vector<string>::iterator it;
-		int fil_i = 0;
-
-		for(it = fil_f.begin(); it != fil_f.end(); it++ ){
-
-			FILE *fil_row;
-			if( (fil_row = popen(fil_f[fil_i].c_str(),"r")) == NULL){
-				perror("can not exec command");
-				exit(EXIT_FAILURE);
-			}
-			else{//エラーがでない場合
-				printf("$ %s\n",fil_f[fil_i].c_str());//コマンドライン入力を出力
-				char buf[256];//コマンドライン出力をゲット
-				char *c;
-				while(c = fgets(buf,sizeof(buf),fil_row)){
-					printf(">> %s",buf);
-				}
-			}
-			fil_i++;
-			pclose(fil_row);
-		}
-	}
-
+	//フィルタ
+	cout <<"-----------------------------------------"<<endl;
+	filter();
+	
 	cout << "Complete!!!" <<endl;
 
 	return 0;

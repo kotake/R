@@ -15,6 +15,9 @@
 #include "next_permutation.hpp"
 #include <map>
 #include <sys/stat.h>
+#include <limits.h>
+#include <string.h>
+
 
 #define K 3
 #define INF 1000000000.0
