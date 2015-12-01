@@ -36,7 +36,7 @@ int main(){
 	}
 
 	//Kmeansによるクラスタリング
-	int K = 3; //クラスタ数
+	int K = 4; //クラスタ数
 	vector<int> prev_cluster, cluster; //各点のクラスタ番号
 	vector<P> vec_m; //各クラスタの代表ベクトル
 
@@ -45,9 +45,10 @@ int main(){
 		cluster.push_back(-1);
 	}
 	//検証のため、代表ベクトルの初期位置を手動で決める
-	vec_m.push_back(P(2.0,90.0));
-	vec_m.push_back(P(5.0,50.0));
-	vec_m.push_back(P(3.0,70.0));
+	vec_m.push_back(P(7066,9184));
+	vec_m.push_back(P(6973,4425));
+	vec_m.push_back(P(7705,5428));
+	vec_m.push_back(P(854,2599));
 
 
 	while(!isEqual(prev_cluster, cluster)){

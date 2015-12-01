@@ -69,4 +69,11 @@ int conb(int n, int r);
 void filter();
 //vector<ofstream*> filter(string st_name, double r, string sort_name, int data_num);
 
+class Result{
+	double r;//相関係数
+	double *r_dp;//kmeans
+	string r_st;//association
+};
+
+
 #endif /* HEADER_H */

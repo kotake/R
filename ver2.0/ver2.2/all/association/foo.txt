@@ -1,7 +1,406 @@
-   lhs                     rhs                   support confidence lift
-2  {}                   => {Petal.L..Virginica}  1       1          1   
-3  {}                   => {Sepal.L..Setosa}     1       1          1   
-4  {}                   => {Sepal.L..Versicolor} 1       1          1   
-5  {}                   => {Sepal.L..Virginica}  1       1          1   
-19 {Petal.L..Virginica} => {Sepal.L..Setosa}     1       1          1   
-20 {Sepal.L..Setosa}    => {Petal.L..Virginica}  1       1          1   
+    lhs                      rhs                   support confidence      lift
+1   {}                    => {Petal.L..Versicolor}    0.94       0.94 1.0000000
+2   {}                    => {Petal.L..Virginica}     1.00       1.00 1.0000000
+3   {}                    => {Sepal.L..Setosa}        1.00       1.00 1.0000000
+4   {}                    => {Sepal.L..Versicolor}    1.00       1.00 1.0000000
+5   {}                    => {Sepal.L..Virginica}     1.00       1.00 1.0000000
+6   {Sepal.W..Setosa}     => {Petal.L..Versicolor}    0.34       0.85 0.9042553
+7   {Sepal.W..Setosa}     => {Petal.L..Virginica}     0.40       1.00 1.0000000
+8   {Sepal.W..Setosa}     => {Sepal.L..Setosa}        0.40       1.00 1.0000000
+9   {Sepal.W..Setosa}     => {Sepal.L..Versicolor}    0.40       1.00 1.0000000
+10  {Sepal.W..Setosa}     => {Sepal.L..Virginica}     0.40       1.00 1.0000000
+11  {Petal.L..Versicolor} => {Petal.L..Virginica}     0.94       1.00 1.0000000
+12  {Petal.L..Virginica}  => {Petal.L..Versicolor}    0.94       0.94 1.0000000
+13  {Petal.L..Versicolor} => {Sepal.L..Setosa}        0.94       1.00 1.0000000
+14  {Sepal.L..Setosa}     => {Petal.L..Versicolor}    0.94       0.94 1.0000000
+15  {Petal.L..Versicolor} => {Sepal.L..Versicolor}    0.94       1.00 1.0000000
+16  {Sepal.L..Versicolor} => {Petal.L..Versicolor}    0.94       0.94 1.0000000
+17  {Petal.L..Versicolor} => {Sepal.L..Virginica}     0.94       1.00 1.0000000
+18  {Sepal.L..Virginica}  => {Petal.L..Versicolor}    0.94       0.94 1.0000000
+19  {Petal.L..Virginica}  => {Sepal.L..Setosa}        1.00       1.00 1.0000000
+20  {Sepal.L..Setosa}     => {Petal.L..Virginica}     1.00       1.00 1.0000000
+21  {Petal.L..Virginica}  => {Sepal.L..Versicolor}    1.00       1.00 1.0000000
+22  {Sepal.L..Versicolor} => {Petal.L..Virginica}     1.00       1.00 1.0000000
+23  {Petal.L..Virginica}  => {Sepal.L..Virginica}     1.00       1.00 1.0000000
+24  {Sepal.L..Virginica}  => {Petal.L..Virginica}     1.00       1.00 1.0000000
+25  {Sepal.L..Setosa}     => {Sepal.L..Versicolor}    1.00       1.00 1.0000000
+26  {Sepal.L..Versicolor} => {Sepal.L..Setosa}        1.00       1.00 1.0000000
+27  {Sepal.L..Setosa}     => {Sepal.L..Virginica}     1.00       1.00 1.0000000
+28  {Sepal.L..Virginica}  => {Sepal.L..Setosa}        1.00       1.00 1.0000000
+29  {Sepal.L..Versicolor} => {Sepal.L..Virginica}     1.00       1.00 1.0000000
+30  {Sepal.L..Virginica}  => {Sepal.L..Versicolor}    1.00       1.00 1.0000000
+31  {Petal.L..Versicolor,                                                      
+     Sepal.W..Setosa}     => {Petal.L..Virginica}     0.34       1.00 1.0000000
+32  {Petal.L..Virginica,                                                       
+     Sepal.W..Setosa}     => {Petal.L..Versicolor}    0.34       0.85 0.9042553
+33  {Petal.L..Versicolor,                                                      
+     Sepal.W..Setosa}     => {Sepal.L..Setosa}        0.34       1.00 1.0000000
+34  {Sepal.L..Setosa,                                                          
+     Sepal.W..Setosa}     => {Petal.L..Versicolor}    0.34       0.85 0.9042553
+35  {Petal.L..Versicolor,                                                      
+     Sepal.W..Setosa}     => {Sepal.L..Versicolor}    0.34       1.00 1.0000000
+36  {Sepal.L..Versicolor,                                                      
+     Sepal.W..Setosa}     => {Petal.L..Versicolor}    0.34       0.85 0.9042553
+37  {Petal.L..Versicolor,                                                      
+     Sepal.W..Setosa}     => {Sepal.L..Virginica}     0.34       1.00 1.0000000
+38  {Sepal.L..Virginica,                                                       
+     Sepal.W..Setosa}     => {Petal.L..Versicolor}    0.34       0.85 0.9042553
+39  {Petal.L..Virginica,                                                       
+     Sepal.W..Setosa}     => {Sepal.L..Setosa}        0.40       1.00 1.0000000
+40  {Sepal.L..Setosa,                                                          
+     Sepal.W..Setosa}     => {Petal.L..Virginica}     0.40       1.00 1.0000000
+41  {Petal.L..Virginica,                                                       
+     Sepal.W..Setosa}     => {Sepal.L..Versicolor}    0.40       1.00 1.0000000
+42  {Sepal.L..Versicolor,                                                      
+     Sepal.W..Setosa}     => {Petal.L..Virginica}     0.40       1.00 1.0000000
+43  {Petal.L..Virginica,                                                       
+     Sepal.W..Setosa}     => {Sepal.L..Virginica}     0.40       1.00 1.0000000
+44  {Sepal.L..Virginica,                                                       
+     Sepal.W..Setosa}     => {Petal.L..Virginica}     0.40       1.00 1.0000000
+45  {Sepal.L..Setosa,                                                          
+     Sepal.W..Setosa}     => {Sepal.L..Versicolor}    0.40       1.00 1.0000000
+46  {Sepal.L..Versicolor,                                                      
+     Sepal.W..Setosa}     => {Sepal.L..Setosa}        0.40       1.00 1.0000000
+47  {Sepal.L..Setosa,                                                          
+     Sepal.W..Setosa}     => {Sepal.L..Virginica}     0.40       1.00 1.0000000
+48  {Sepal.L..Virginica,                                                       
+     Sepal.W..Setosa}     => {Sepal.L..Setosa}        0.40       1.00 1.0000000
+49  {Sepal.L..Versicolor,                                                      
+     Sepal.W..Setosa}     => {Sepal.L..Virginica}     0.40       1.00 1.0000000
+50  {Sepal.L..Virginica,                                                       
+     Sepal.W..Setosa}     => {Sepal.L..Versicolor}    0.40       1.00 1.0000000
+51  {Petal.L..Versicolor,                                                      
+     Petal.L..Virginica}  => {Sepal.L..Setosa}        0.94       1.00 1.0000000
+52  {Petal.L..Versicolor,                                                      
+     Sepal.L..Setosa}     => {Petal.L..Virginica}     0.94       1.00 1.0000000
+53  {Petal.L..Virginica,                                                       
+     Sepal.L..Setosa}     => {Petal.L..Versicolor}    0.94       0.94 1.0000000
+54  {Petal.L..Versicolor,                                                      
+     Petal.L..Virginica}  => {Sepal.L..Versicolor}    0.94       1.00 1.0000000
+55  {Petal.L..Versicolor,                                                      
+     Sepal.L..Versicolor} => {Petal.L..Virginica}     0.94       1.00 1.0000000
+56  {Petal.L..Virginica,                                                       
+     Sepal.L..Versicolor} => {Petal.L..Versicolor}    0.94       0.94 1.0000000
+57  {Petal.L..Versicolor,                                                      
+     Petal.L..Virginica}  => {Sepal.L..Virginica}     0.94       1.00 1.0000000
+58  {Petal.L..Versicolor,                                                      
+     Sepal.L..Virginica}  => {Petal.L..Virginica}     0.94       1.00 1.0000000
+59  {Petal.L..Virginica,                                                       
+     Sepal.L..Virginica}  => {Petal.L..Versicolor}    0.94       0.94 1.0000000
+60  {Petal.L..Versicolor,                                                      
+     Sepal.L..Setosa}     => {Sepal.L..Versicolor}    0.94       1.00 1.0000000
+61  {Petal.L..Versicolor,                                                      
+     Sepal.L..Versicolor} => {Sepal.L..Setosa}        0.94       1.00 1.0000000
+62  {Sepal.L..Setosa,                                                          
+     Sepal.L..Versicolor} => {Petal.L..Versicolor}    0.94       0.94 1.0000000
+63  {Petal.L..Versicolor,                                                      
+     Sepal.L..Setosa}     => {Sepal.L..Virginica}     0.94       1.00 1.0000000
+64  {Petal.L..Versicolor,                                                      
+     Sepal.L..Virginica}  => {Sepal.L..Setosa}        0.94       1.00 1.0000000
+65  {Sepal.L..Setosa,                                                          
+     Sepal.L..Virginica}  => {Petal.L..Versicolor}    0.94       0.94 1.0000000
+66  {Petal.L..Versicolor,                                                      
+     Sepal.L..Versicolor} => {Sepal.L..Virginica}     0.94       1.00 1.0000000
+67  {Petal.L..Versicolor,                                                      
+     Sepal.L..Virginica}  => {Sepal.L..Versicolor}    0.94       1.00 1.0000000
+68  {Sepal.L..Versicolor,                                                      
+     Sepal.L..Virginica}  => {Petal.L..Versicolor}    0.94       0.94 1.0000000
+69  {Petal.L..Virginica,                                                       
+     Sepal.L..Setosa}     => {Sepal.L..Versicolor}    1.00       1.00 1.0000000
+70  {Petal.L..Virginica,                                                       
+     Sepal.L..Versicolor} => {Sepal.L..Setosa}        1.00       1.00 1.0000000
+71  {Sepal.L..Setosa,                                                          
+     Sepal.L..Versicolor} => {Petal.L..Virginica}     1.00       1.00 1.0000000
+72  {Petal.L..Virginica,                                                       
+     Sepal.L..Setosa}     => {Sepal.L..Virginica}     1.00       1.00 1.0000000
+73  {Petal.L..Virginica,                                                       
+     Sepal.L..Virginica}  => {Sepal.L..Setosa}        1.00       1.00 1.0000000
+74  {Sepal.L..Setosa,                                                          
+     Sepal.L..Virginica}  => {Petal.L..Virginica}     1.00       1.00 1.0000000
+75  {Petal.L..Virginica,                                                       
+     Sepal.L..Versicolor} => {Sepal.L..Virginica}     1.00       1.00 1.0000000
+76  {Petal.L..Virginica,                                                       
+     Sepal.L..Virginica}  => {Sepal.L..Versicolor}    1.00       1.00 1.0000000
+77  {Sepal.L..Versicolor,                                                      
+     Sepal.L..Virginica}  => {Petal.L..Virginica}     1.00       1.00 1.0000000
+78  {Sepal.L..Setosa,                                                          
+     Sepal.L..Versicolor} => {Sepal.L..Virginica}     1.00       1.00 1.0000000
+79  {Sepal.L..Setosa,                                                          
+     Sepal.L..Virginica}  => {Sepal.L..Versicolor}    1.00       1.00 1.0000000
+80  {Sepal.L..Versicolor,                                                      
+     Sepal.L..Virginica}  => {Sepal.L..Setosa}        1.00       1.00 1.0000000
+81  {Petal.L..Versicolor,                                                      
+     Petal.L..Virginica,                                                       
+     Sepal.W..Setosa}     => {Sepal.L..Setosa}        0.34       1.00 1.0000000
+82  {Petal.L..Versicolor,                                                      
+     Sepal.L..Setosa,                                                          
+     Sepal.W..Setosa}     => {Petal.L..Virginica}     0.34       1.00 1.0000000
+83  {Petal.L..Virginica,                                                       
+     Sepal.L..Setosa,                                                          
+     Sepal.W..Setosa}     => {Petal.L..Versicolor}    0.34       0.85 0.9042553
+84  {Petal.L..Versicolor,                                                      
+     Petal.L..Virginica,                                                       
+     Sepal.W..Setosa}     => {Sepal.L..Versicolor}    0.34       1.00 1.0000000
+85  {Petal.L..Versicolor,                                                      
+     Sepal.L..Versicolor,                                                      
+     Sepal.W..Setosa}     => {Petal.L..Virginica}     0.34       1.00 1.0000000
+86  {Petal.L..Virginica,                                                       
+     Sepal.L..Versicolor,                                                      
+     Sepal.W..Setosa}     => {Petal.L..Versicolor}    0.34       0.85 0.9042553
+87  {Petal.L..Versicolor,                                                      
+     Petal.L..Virginica,                                                       
+     Sepal.W..Setosa}     => {Sepal.L..Virginica}     0.34       1.00 1.0000000
+88  {Petal.L..Versicolor,                                                      
+     Sepal.L..Virginica,                                                       
+     Sepal.W..Setosa}     => {Petal.L..Virginica}     0.34       1.00 1.0000000
+89  {Petal.L..Virginica,                                                       
+     Sepal.L..Virginica,                                                       
+     Sepal.W..Setosa}     => {Petal.L..Versicolor}    0.34       0.85 0.9042553
+90  {Petal.L..Versicolor,                                                      
+     Sepal.L..Setosa,                                                          
+     Sepal.W..Setosa}     => {Sepal.L..Versicolor}    0.34       1.00 1.0000000
+91  {Petal.L..Versicolor,                                                      
+     Sepal.L..Versicolor,                                                      
+     Sepal.W..Setosa}     => {Sepal.L..Setosa}        0.34       1.00 1.0000000
+92  {Sepal.L..Setosa,                                                          
+     Sepal.L..Versicolor,                                                      
+     Sepal.W..Setosa}     => {Petal.L..Versicolor}    0.34       0.85 0.9042553
+93  {Petal.L..Versicolor,                                                      
+     Sepal.L..Setosa,                                                          
+     Sepal.W..Setosa}     => {Sepal.L..Virginica}     0.34       1.00 1.0000000
+94  {Petal.L..Versicolor,                                                      
+     Sepal.L..Virginica,                                                       
+     Sepal.W..Setosa}     => {Sepal.L..Setosa}        0.34       1.00 1.0000000
+95  {Sepal.L..Setosa,                                                          
+     Sepal.L..Virginica,                                                       
+     Sepal.W..Setosa}     => {Petal.L..Versicolor}    0.34       0.85 0.9042553
+96  {Petal.L..Versicolor,                                                      
+     Sepal.L..Versicolor,                                                      
+     Sepal.W..Setosa}     => {Sepal.L..Virginica}     0.34       1.00 1.0000000
+97  {Petal.L..Versicolor,                                                      
+     Sepal.L..Virginica,                                                       
+     Sepal.W..Setosa}     => {Sepal.L..Versicolor}    0.34       1.00 1.0000000
+98  {Sepal.L..Versicolor,                                                      
+     Sepal.L..Virginica,                                                       
+     Sepal.W..Setosa}     => {Petal.L..Versicolor}    0.34       0.85 0.9042553
+99  {Petal.L..Virginica,                                                       
+     Sepal.L..Setosa,                                                          
+     Sepal.W..Setosa}     => {Sepal.L..Versicolor}    0.40       1.00 1.0000000
+100 {Petal.L..Virginica,                                                       
+     Sepal.L..Versicolor,                                                      
+     Sepal.W..Setosa}     => {Sepal.L..Setosa}        0.40       1.00 1.0000000
+101 {Sepal.L..Setosa,                                                          
+     Sepal.L..Versicolor,                                                      
+     Sepal.W..Setosa}     => {Petal.L..Virginica}     0.40       1.00 1.0000000
+102 {Petal.L..Virginica,                                                       
+     Sepal.L..Setosa,                                                          
+     Sepal.W..Setosa}     => {Sepal.L..Virginica}     0.40       1.00 1.0000000
+103 {Petal.L..Virginica,                                                       
+     Sepal.L..Virginica,                                                       
+     Sepal.W..Setosa}     => {Sepal.L..Setosa}        0.40       1.00 1.0000000
+104 {Sepal.L..Setosa,                                                          
+     Sepal.L..Virginica,                                                       
+     Sepal.W..Setosa}     => {Petal.L..Virginica}     0.40       1.00 1.0000000
+105 {Petal.L..Virginica,                                                       
+     Sepal.L..Versicolor,                                                      
+     Sepal.W..Setosa}     => {Sepal.L..Virginica}     0.40       1.00 1.0000000
+106 {Petal.L..Virginica,                                                       
+     Sepal.L..Virginica,                                                       
+     Sepal.W..Setosa}     => {Sepal.L..Versicolor}    0.40       1.00 1.0000000
+107 {Sepal.L..Versicolor,                                                      
+     Sepal.L..Virginica,                                                       
+     Sepal.W..Setosa}     => {Petal.L..Virginica}     0.40       1.00 1.0000000
+108 {Sepal.L..Setosa,                                                          
+     Sepal.L..Versicolor,                                                      
+     Sepal.W..Setosa}     => {Sepal.L..Virginica}     0.40       1.00 1.0000000
+109 {Sepal.L..Setosa,                                                          
+     Sepal.L..Virginica,                                                       
+     Sepal.W..Setosa}     => {Sepal.L..Versicolor}    0.40       1.00 1.0000000
+110 {Sepal.L..Versicolor,                                                      
+     Sepal.L..Virginica,                                                       
+     Sepal.W..Setosa}     => {Sepal.L..Setosa}        0.40       1.00 1.0000000
+111 {Petal.L..Versicolor,                                                      
+     Petal.L..Virginica,                                                       
+     Sepal.L..Setosa}     => {Sepal.L..Versicolor}    0.94       1.00 1.0000000
+112 {Petal.L..Versicolor,                                                      
+     Petal.L..Virginica,                                                       
+     Sepal.L..Versicolor} => {Sepal.L..Setosa}        0.94       1.00 1.0000000
+113 {Petal.L..Versicolor,                                                      
+     Sepal.L..Setosa,                                                          
+     Sepal.L..Versicolor} => {Petal.L..Virginica}     0.94       1.00 1.0000000
+114 {Petal.L..Virginica,                                                       
+     Sepal.L..Setosa,                                                          
+     Sepal.L..Versicolor} => {Petal.L..Versicolor}    0.94       0.94 1.0000000
+115 {Petal.L..Versicolor,                                                      
+     Petal.L..Virginica,                                                       
+     Sepal.L..Setosa}     => {Sepal.L..Virginica}     0.94       1.00 1.0000000
+116 {Petal.L..Versicolor,                                                      
+     Petal.L..Virginica,                                                       
+     Sepal.L..Virginica}  => {Sepal.L..Setosa}        0.94       1.00 1.0000000
+117 {Petal.L..Versicolor,                                                      
+     Sepal.L..Setosa,                                                          
+     Sepal.L..Virginica}  => {Petal.L..Virginica}     0.94       1.00 1.0000000
+118 {Petal.L..Virginica,                                                       
+     Sepal.L..Setosa,                                                          
+     Sepal.L..Virginica}  => {Petal.L..Versicolor}    0.94       0.94 1.0000000
+119 {Petal.L..Versicolor,                                                      
+     Petal.L..Virginica,                                                       
+     Sepal.L..Versicolor} => {Sepal.L..Virginica}     0.94       1.00 1.0000000
+120 {Petal.L..Versicolor,                                                      
+     Petal.L..Virginica,                                                       
+     Sepal.L..Virginica}  => {Sepal.L..Versicolor}    0.94       1.00 1.0000000
+121 {Petal.L..Versicolor,                                                      
+     Sepal.L..Versicolor,                                                      
+     Sepal.L..Virginica}  => {Petal.L..Virginica}     0.94       1.00 1.0000000
+122 {Petal.L..Virginica,                                                       
+     Sepal.L..Versicolor,                                                      
+     Sepal.L..Virginica}  => {Petal.L..Versicolor}    0.94       0.94 1.0000000
+123 {Petal.L..Versicolor,                                                      
+     Sepal.L..Setosa,                                                          
+     Sepal.L..Versicolor} => {Sepal.L..Virginica}     0.94       1.00 1.0000000
+124 {Petal.L..Versicolor,                                                      
+     Sepal.L..Setosa,                                                          
+     Sepal.L..Virginica}  => {Sepal.L..Versicolor}    0.94       1.00 1.0000000
+125 {Petal.L..Versicolor,                                                      
+     Sepal.L..Versicolor,                                                      
+     Sepal.L..Virginica}  => {Sepal.L..Setosa}        0.94       1.00 1.0000000
+126 {Sepal.L..Setosa,                                                          
+     Sepal.L..Versicolor,                                                      
+     Sepal.L..Virginica}  => {Petal.L..Versicolor}    0.94       0.94 1.0000000
+127 {Petal.L..Virginica,                                                       
+     Sepal.L..Setosa,                                                          
+     Sepal.L..Versicolor} => {Sepal.L..Virginica}     1.00       1.00 1.0000000
+128 {Petal.L..Virginica,                                                       
+     Sepal.L..Setosa,                                                          
+     Sepal.L..Virginica}  => {Sepal.L..Versicolor}    1.00       1.00 1.0000000
+129 {Petal.L..Virginica,                                                       
+     Sepal.L..Versicolor,                                                      
+     Sepal.L..Virginica}  => {Sepal.L..Setosa}        1.00       1.00 1.0000000
+130 {Sepal.L..Setosa,                                                          
+     Sepal.L..Versicolor,                                                      
+     Sepal.L..Virginica}  => {Petal.L..Virginica}     1.00       1.00 1.0000000
+131 {Petal.L..Versicolor,                                                      
+     Petal.L..Virginica,                                                       
+     Sepal.L..Setosa,                                                          
+     Sepal.W..Setosa}     => {Sepal.L..Versicolor}    0.34       1.00 1.0000000
+132 {Petal.L..Versicolor,                                                      
+     Petal.L..Virginica,                                                       
+     Sepal.L..Versicolor,                                                      
+     Sepal.W..Setosa}     => {Sepal.L..Setosa}        0.34       1.00 1.0000000
+133 {Petal.L..Versicolor,                                                      
+     Sepal.L..Setosa,                                                          
+     Sepal.L..Versicolor,                                                      
+     Sepal.W..Setosa}     => {Petal.L..Virginica}     0.34       1.00 1.0000000
+134 {Petal.L..Virginica,                                                       
+     Sepal.L..Setosa,                                                          
+     Sepal.L..Versicolor,                                                      
+     Sepal.W..Setosa}     => {Petal.L..Versicolor}    0.34       0.85 0.9042553
+135 {Petal.L..Versicolor,                                                      
+     Petal.L..Virginica,                                                       
+     Sepal.L..Setosa,                                                          
+     Sepal.W..Setosa}     => {Sepal.L..Virginica}     0.34       1.00 1.0000000
+136 {Petal.L..Versicolor,                                                      
+     Petal.L..Virginica,                                                       
+     Sepal.L..Virginica,                                                       
+     Sepal.W..Setosa}     => {Sepal.L..Setosa}        0.34       1.00 1.0000000
+137 {Petal.L..Versicolor,                                                      
+     Sepal.L..Setosa,                                                          
+     Sepal.L..Virginica,                                                       
+     Sepal.W..Setosa}     => {Petal.L..Virginica}     0.34       1.00 1.0000000
+138 {Petal.L..Virginica,                                                       
+     Sepal.L..Setosa,                                                          
+     Sepal.L..Virginica,                                                       
+     Sepal.W..Setosa}     => {Petal.L..Versicolor}    0.34       0.85 0.9042553
+139 {Petal.L..Versicolor,                                                      
+     Petal.L..Virginica,                                                       
+     Sepal.L..Versicolor,                                                      
+     Sepal.W..Setosa}     => {Sepal.L..Virginica}     0.34       1.00 1.0000000
+140 {Petal.L..Versicolor,                                                      
+     Petal.L..Virginica,                                                       
+     Sepal.L..Virginica,                                                       
+     Sepal.W..Setosa}     => {Sepal.L..Versicolor}    0.34       1.00 1.0000000
+141 {Petal.L..Versicolor,                                                      
+     Sepal.L..Versicolor,                                                      
+     Sepal.L..Virginica,                                                       
+     Sepal.W..Setosa}     => {Petal.L..Virginica}     0.34       1.00 1.0000000
+142 {Petal.L..Virginica,                                                       
+     Sepal.L..Versicolor,                                                      
+     Sepal.L..Virginica,                                                       
+     Sepal.W..Setosa}     => {Petal.L..Versicolor}    0.34       0.85 0.9042553
+143 {Petal.L..Versicolor,                                                      
+     Sepal.L..Setosa,                                                          
+     Sepal.L..Versicolor,                                                      
+     Sepal.W..Setosa}     => {Sepal.L..Virginica}     0.34       1.00 1.0000000
+144 {Petal.L..Versicolor,                                                      
+     Sepal.L..Setosa,                                                          
+     Sepal.L..Virginica,                                                       
+     Sepal.W..Setosa}     => {Sepal.L..Versicolor}    0.34       1.00 1.0000000
+145 {Petal.L..Versicolor,                                                      
+     Sepal.L..Versicolor,                                                      
+     Sepal.L..Virginica,                                                       
+     Sepal.W..Setosa}     => {Sepal.L..Setosa}        0.34       1.00 1.0000000
+146 {Sepal.L..Setosa,                                                          
+     Sepal.L..Versicolor,                                                      
+     Sepal.L..Virginica,                                                       
+     Sepal.W..Setosa}     => {Petal.L..Versicolor}    0.34       0.85 0.9042553
+147 {Petal.L..Virginica,                                                       
+     Sepal.L..Setosa,                                                          
+     Sepal.L..Versicolor,                                                      
+     Sepal.W..Setosa}     => {Sepal.L..Virginica}     0.40       1.00 1.0000000
+148 {Petal.L..Virginica,                                                       
+     Sepal.L..Setosa,                                                          
+     Sepal.L..Virginica,                                                       
+     Sepal.W..Setosa}     => {Sepal.L..Versicolor}    0.40       1.00 1.0000000
+149 {Petal.L..Virginica,                                                       
+     Sepal.L..Versicolor,                                                      
+     Sepal.L..Virginica,                                                       
+     Sepal.W..Setosa}     => {Sepal.L..Setosa}        0.40       1.00 1.0000000
+150 {Sepal.L..Setosa,                                                          
+     Sepal.L..Versicolor,                                                      
+     Sepal.L..Virginica,                                                       
+     Sepal.W..Setosa}     => {Petal.L..Virginica}     0.40       1.00 1.0000000
+151 {Petal.L..Versicolor,                                                      
+     Petal.L..Virginica,                                                       
+     Sepal.L..Setosa,                                                          
+     Sepal.L..Versicolor} => {Sepal.L..Virginica}     0.94       1.00 1.0000000
+152 {Petal.L..Versicolor,                                                      
+     Petal.L..Virginica,                                                       
+     Sepal.L..Setosa,                                                          
+     Sepal.L..Virginica}  => {Sepal.L..Versicolor}    0.94       1.00 1.0000000
+153 {Petal.L..Versicolor,                                                      
+     Petal.L..Virginica,                                                       
+     Sepal.L..Versicolor,                                                      
+     Sepal.L..Virginica}  => {Sepal.L..Setosa}        0.94       1.00 1.0000000
+154 {Petal.L..Versicolor,                                                      
+     Sepal.L..Setosa,                                                          
+     Sepal.L..Versicolor,                                                      
+     Sepal.L..Virginica}  => {Petal.L..Virginica}     0.94       1.00 1.0000000
+155 {Petal.L..Virginica,                                                       
+     Sepal.L..Setosa,                                                          
+     Sepal.L..Versicolor,                                                      
+     Sepal.L..Virginica}  => {Petal.L..Versicolor}    0.94       0.94 1.0000000
+156 {Petal.L..Versicolor,                                                      
+     Petal.L..Virginica,                                                       
+     Sepal.L..Setosa,                                                          
+     Sepal.L..Versicolor,                                                      
+     Sepal.W..Setosa}     => {Sepal.L..Virginica}     0.34       1.00 1.0000000
+157 {Petal.L..Versicolor,                                                      
+     Petal.L..Virginica,                                                       
+     Sepal.L..Setosa,                                                          
+     Sepal.L..Virginica,                                                       
+     Sepal.W..Setosa}     => {Sepal.L..Versicolor}    0.34       1.00 1.0000000
+158 {Petal.L..Versicolor,                                                      
+     Petal.L..Virginica,                                                       
+     Sepal.L..Versicolor,                                                      
+     Sepal.L..Virginica,                                                       
+     Sepal.W..Setosa}     => {Sepal.L..Setosa}        0.34       1.00 1.0000000
+159 {Petal.L..Versicolor,                                                      
+     Sepal.L..Setosa,                                                          
+     Sepal.L..Versicolor,                                                      
+     Sepal.L..Virginica,                                                       
+     Sepal.W..Setosa}     => {Petal.L..Virginica}     0.34       1.00 1.0000000
+160 {Petal.L..Virginica,                                                       
+     Sepal.L..Setosa,                                                          
+     Sepal.L..Versicolor,                                                      
+     Sepal.L..Virginica,                                                       
+     Sepal.W..Setosa}     => {Petal.L..Versicolor}    0.34       0.85 0.9042553

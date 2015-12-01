@@ -84,7 +84,7 @@ void Bigdata::kmeans(CSVData mycsv, const vector<P> &input, int sheet_num, int r
 		int rand = mt() % mycsv.row_num;
 
 		vec_m.push_back(P(0,0));
-		vec_m[i]=input[rand];
+		vec_m[i] = input[rand];
 	}
 
 
@@ -295,7 +295,8 @@ void Bigdata::aso(CSVData mycsv){
 	fprintf(R, "iris.tran<-read.transactions(file='all/association/transaction.txt',sep=',',format='basket')\n");
 	fprintf(R, "invisible(capture.output(iris.ap<-apriori(iris.tran)))\n");
 	fprintf(R, "sink(file = \"all/association/foo.txt\")\n");
-	fprintf(R, "suppressWarnings(inspect(head(SORT(iris.ap, by = \"support\"),n=6)))\n");
+	//fprintf(R, "suppressWarnings(inspect(head(SORT(iris.ap, by = \"support\"),n=6)))\n");
+	fprintf(R, "suppressWarnings(inspect(iris.ap))\n");
 	fprintf(R, "sink()\n");
 	fprintf(R, "q(\"no\")\n");
 	fflush(R);
@@ -365,47 +366,3 @@ void filter(){
 		cout << endl;
 	}
 }
-//1変数を受け取り、フィルターを通る実行結果のみをfillterフォルダに出力
-/*
-   void filter(int var, double r,int sheetnum){	//1-10,SD[],
-   if(mkdir("filter",777)==0){
-   cout << "フォルダfilterを作成しました"<<endl;
-   mkdir("filter/correlation",777)==0;
-   cout << "フォルダfilter/correlationを作成しました"<<endl;
-   mkdir("filter/k-means",777)==0;
-   cout << "フォルダfilter/k-meansを作成しました"<<endl;
-   mkdir("filter/k-means/output",777)==0;
-   cout << "フォルダfilter/k-means/outputを作成しました"<<endl;
-   mkdir("filter/k-means/graph",777)==0;
-   cout << "フォルダfilter/k-means/graphを作成しました"<<endl;
-   mkdir("filter/association",777)==0;
-   cout << "フォルダfilter/associationを作成しました"<<endl;
-   };
-
-   double f_width;
-   f_width = (SD_max[]-SD_min[])/10;
-   for(int i=1; i<=K ;i++){
-   if(r < SD_min[i]+(f_wid*var))
-   {
-   FILE* gnuplot = popen("gnuplot", "w");
-   fprintf(gnuplot, "set term png\n");
-   fprintf(gnuplot, "set output \"all/k-means/graph/result%02d.png\"\n",sheetnum);
-   fprintf(gnuplot, "set xl \"%s\"\n",rabel[rab_x].c_str());
-   fprintf(gnuplot, "set yl \"%s\"\n",rabel[rab_y].c_str());
-   fprintf(gnuplot, "plot \"all/k-means/output/out%d.txt\" ",sheetnum);
-   for(int i=0;i<K;i++){
-   fprintf(gnuplot, "_index %d",i);
-   if(i!=K-1) fprintf(gnuplot, ", \"\" ");
-   }
-   fprintf(gnuplot, "\n");
-   fprintf(gnuplot, "exit");
-   fflush(gnuplot); //バッファを書き出す
-   pclose(gnuplot);
-
-
-   }
-   }
-//	ofstream fillter_f("filter/correlation/");
-
-}
-*/
