@@ -1,4 +1,7 @@
+#include "bigdata.hpp"
 #include "head.hpp"
+#include "statistics.hpp"
+#include "filter.hpp"
 
 int main(){
 
@@ -8,9 +11,6 @@ int main(){
 	mycsv = CSVData::load_from(fn);
 
 	cout << "new size:"<< mycsv.get_col() * mycsv.get_row() << endl;
-
-	vector<P> data;
-	data.reserve(mycsv.get_row());
 
 	cout << "conb:" << conb(mycsv.get_col(),2) << endl;
 
@@ -26,24 +26,21 @@ int main(){
 		cout << "フォルダall/k-means/graphを作成しました"<<endl;
 		mkdir("all/association",777)==0;
 		cout << "フォルダall/associationを作成しました"<<endl;
-	};
+	}
 
-	Result sokan, kmeans, aso;
-
-	Bigdata myBd;
-	myBd.sokan(mycsv);
-
-	myBd.kmeans(mycsv);
-
-	cout <<"-----------------------------------------"<<endl;
-	cout << "相関とk-means終了"<<endl<<endl;
-
-	myBd.aso(mycsv);
-
-
+	all_data mydata;
+	
+	//all
+	mydata = all(mycsv);//CSVData型をall_data型へ変換
+	
 	//フィルタ
 	cout <<"-----------------------------------------"<<endl;
-	//filter();
+
+	//allからafter_filにコピー
+	fil_kmeans(mydata);
+	fil_r(mydata);
+
+	write(mydata);//ファイル書き込み
 
 	cout << "Complete!!!" <<endl;
 
