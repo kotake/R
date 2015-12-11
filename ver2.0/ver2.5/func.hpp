@@ -102,34 +102,53 @@ void CSVData::load_from(string filename){
 
 }
 
-void write(all_data data){
+void write(all_data D){
 	if(mkdir("after_fil",777)==0)
 		cout << "フォルダafter_filを作成しました"<<endl;
-	
-	//vector<sokan_data> mysd;
-	//vector<kmeans_data> mykd;
-	//vector<aso_data> myad;
 
-	if(data.mysd.size()!=0){
+	//sokan
+	if(D.mysd.size()!=0){
 		//ファイルポインタ獲得
 		ofstream ofs("after_fil/sokan_data.txt");
-		//for(int i = 0; i < data.mysd.r.size(); i++)
-		//	ofs << data.mysd.r[i] << endl;
+		for(int i = 0; i < D.mysd.size(); i++){
+			ofs << "sokan["<<i<<"]"<<endl;
+			ofs << "  rabel_x:" << D.mysd[i].rab_x << endl;
+			ofs << "  rabel_y:" << D.mysd[i].rab_y << endl;
+		}
 		ofs.close();
 	}
-	if(data.mykd.size()!=0){
+
+	//kmeans
+	if(D.mykd.size()!=0){
 		//ファイルポインタ獲得
 		ofstream ofs("after_fil/kmeans_data.txt");
-		//for(int i = 0; i < data.mykd.x.size(); i++)
-		//	ofs << data.mykd.x[i] << endl;
+		for(int i = 0; i < D.mykd.size(); i++){
+			ofs << "kmeans["<<i<<"]"<<endl;
+			ofs << "  rabel_x:" << D.mysd[i].rab_x << endl;
+			ofs << "  rabel_y:" << D.mysd[i].rab_y << endl;
+			for(int j=0;j<D.mykd[i].p.size();j++){
+				ofs << "    mykd["<<i<<"]:"<<"point["<<j<<"]:";
+				ofs << "("<<D.mykd[i].p[j].x<<", ";
+				ofs << D.mykd[i].p[j].y<<", ";
+				ofs << D.mykd[i].p[j].cluster<<")"<< endl;
+			}
+		}
 		ofs.close();
 	}
-	if(data.myad.size()!=0){
+
+	//aso
+	if(D.myad.size()!=0){
 		//ファイルポインタ獲得
 		ofstream ofs("after_fil/aso_data.txt");
-		/*for(int i = 0; i < data.myad.lhs.size(); i++){
-			ofs << data.myad.lhs << " => " << data.myad.rhs << " : "<< data.myad.support[i] <<" "<< data.myad.confidence[i] << " " << data.myad.lift[i]<<endl;
-		}*/
+		for(int i = 0; i < D.myad.size(); i++){
+			ofs << "aso["<<i<<"]"<<endl;
+			ofs << "  lhs:" << D.myad[i].lhs << ", ";
+			ofs << "rhs:" << D.myad[i].rhs << ", ";
+			ofs << "support:" << D.myad[i].support << ", ";
+			ofs << "confidence:" << D.myad[i].confidence << ", ";
+			ofs << "lift:" << D.myad[i].lift << ", ";
+			ofs << endl;
+		}
 		ofs.close();
 	}
 }
@@ -148,7 +167,4 @@ void folder_check(){
 		mkdir("all/association",777)==0;
 		cout << "フォルダall/associationを作成しました"<<endl;
 	}
-
-
-
 }

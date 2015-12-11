@@ -1,0 +1,198 @@
+sokan[0]
+  rabel_x:Sepal.L..Setosa
+  rabel_y:Sepal.W..Setosa
+sokan[1]
+  rabel_x:Sepal.L..Setosa
+  rabel_y:Petal.L..Setosa
+sokan[2]
+  rabel_x:Sepal.L..Setosa
+  rabel_y:Petal.W..Setosa
+sokan[3]
+  rabel_x:Sepal.L..Setosa
+  rabel_y:Sepal.L..Versicolor
+sokan[4]
+  rabel_x:Sepal.L..Setosa
+  rabel_y:Sepal.W..Versicolor
+sokan[5]
+  rabel_x:Sepal.L..Setosa
+  rabel_y:Petal.L..Versicolor
+sokan[6]
+  rabel_x:Sepal.L..Setosa
+  rabel_y:Petal.W..Versicolor
+sokan[7]
+  rabel_x:Sepal.L..Setosa
+  rabel_y:Sepal.L..Virginica
+sokan[8]
+  rabel_x:Sepal.L..Setosa
+  rabel_y:Sepal.W..Virginica
+sokan[9]
+  rabel_x:Sepal.L..Setosa
+  rabel_y:Petal.L..Virginica
+sokan[10]
+  rabel_x:Sepal.L..Setosa
+  rabel_y:Petal.W..Virginica
+sokan[11]
+  rabel_x:Sepal.W..Setosa
+  rabel_y:Petal.L..Setosa
+sokan[12]
+  rabel_x:Sepal.W..Setosa
+  rabel_y:Petal.W..Setosa
+sokan[13]
+  rabel_x:Sepal.W..Setosa
+  rabel_y:Sepal.L..Versicolor
+sokan[14]
+  rabel_x:Sepal.W..Setosa
+  rabel_y:Sepal.W..Versicolor
+sokan[15]
+  rabel_x:Sepal.W..Setosa
+  rabel_y:Petal.L..Versicolor
+sokan[16]
+  rabel_x:Sepal.W..Setosa
+  rabel_y:Petal.W..Versicolor
+sokan[17]
+  rabel_x:Sepal.W..Setosa
+  rabel_y:Sepal.L..Virginica
+sokan[18]
+  rabel_x:Sepal.W..Setosa
+  rabel_y:Sepal.W..Virginica
+sokan[19]
+  rabel_x:Sepal.W..Setosa
+  rabel_y:Petal.L..Virginica
+sokan[20]
+  rabel_x:Sepal.W..Setosa
+  rabel_y:Petal.W..Virginica
+sokan[21]
+  rabel_x:Petal.L..Setosa
+  rabel_y:Petal.W..Setosa
+sokan[22]
+  rabel_x:Petal.L..Setosa
+  rabel_y:Sepal.L..Versicolor
+sokan[23]
+  rabel_x:Petal.L..Setosa
+  rabel_y:Sepal.W..Versicolor
+sokan[24]
+  rabel_x:Petal.L..Setosa
+  rabel_y:Petal.L..Versicolor
+sokan[25]
+  rabel_x:Petal.L..Setosa
+  rabel_y:Petal.W..Versicolor
+sokan[26]
+  rabel_x:Petal.L..Setosa
+  rabel_y:Sepal.L..Virginica
+sokan[27]
+  rabel_x:Petal.L..Setosa
+  rabel_y:Sepal.W..Virginica
+sokan[28]
+  rabel_x:Petal.L..Setosa
+  rabel_y:Petal.L..Virginica
+sokan[29]
+  rabel_x:Petal.L..Setosa
+  rabel_y:Petal.W..Virginica
+sokan[30]
+  rabel_x:Petal.W..Setosa
+  rabel_y:Sepal.L..Versicolor
+sokan[31]
+  rabel_x:Petal.W..Setosa
+  rabel_y:Sepal.W..Versicolor
+sokan[32]
+  rabel_x:Petal.W..Setosa
+  rabel_y:Petal.L..Versicolor
+sokan[33]
+  rabel_x:Petal.W..Setosa
+  rabel_y:Petal.W..Versicolor
+sokan[34]
+  rabel_x:Petal.W..Setosa
+  rabel_y:Sepal.L..Virginica
+sokan[35]
+  rabel_x:Petal.W..Setosa
+  rabel_y:Sepal.W..Virginica
+sokan[36]
+  rabel_x:Petal.W..Setosa
+  rabel_y:Petal.L..Virginica
+sokan[37]
+  rabel_x:Petal.W..Setosa
+  rabel_y:Petal.W..Virginica
+sokan[38]
+  rabel_x:Sepal.L..Versicolor
+  rabel_y:Sepal.W..Versicolor
+sokan[39]
+  rabel_x:Sepal.L..Versicolor
+  rabel_y:Petal.L..Versicolor
+sokan[40]
+  rabel_x:Sepal.L..Versicolor
+  rabel_y:Petal.W..Versicolor
+sokan[41]
+  rabel_x:Sepal.L..Versicolor
+  rabel_y:Sepal.L..Virginica
+sokan[42]
+  rabel_x:Sepal.L..Versicolor
+  rabel_y:Sepal.W..Virginica
+sokan[43]
+  rabel_x:Sepal.L..Versicolor
+  rabel_y:Petal.L..Virginica
+sokan[44]
+  rabel_x:Sepal.L..Versicolor
+  rabel_y:Petal.W..Virginica
+sokan[45]
+  rabel_x:Sepal.W..Versicolor
+  rabel_y:Petal.L..Versicolor
+sokan[46]
+  rabel_x:Sepal.W..Versicolor
+  rabel_y:Petal.W..Versicolor
+sokan[47]
+  rabel_x:Sepal.W..Versicolor
+  rabel_y:Sepal.L..Virginica
+sokan[48]
+  rabel_x:Sepal.W..Versicolor
+  rabel_y:Sepal.W..Virginica
+sokan[49]
+  rabel_x:Sepal.W..Versicolor
+  rabel_y:Petal.L..Virginica
+sokan[50]
+  rabel_x:Sepal.W..Versicolor
+  rabel_y:Petal.W..Virginica
+sokan[51]
+  rabel_x:Petal.L..Versicolor
+  rabel_y:Petal.W..Versicolor
+sokan[52]
+  rabel_x:Petal.L..Versicolor
+  rabel_y:Sepal.L..Virginica
+sokan[53]
+  rabel_x:Petal.L..Versicolor
+  rabel_y:Sepal.W..Virginica
+sokan[54]
+  rabel_x:Petal.L..Versicolor
+  rabel_y:Petal.L..Virginica
+sokan[55]
+  rabel_x:Petal.L..Versicolor
+  rabel_y:Petal.W..Virginica
+sokan[56]
+  rabel_x:Petal.W..Versicolor
+  rabel_y:Sepal.L..Virginica
+sokan[57]
+  rabel_x:Petal.W..Versicolor
+  rabel_y:Sepal.W..Virginica
+sokan[58]
+  rabel_x:Petal.W..Versicolor
+  rabel_y:Petal.L..Virginica
+sokan[59]
+  rabel_x:Petal.W..Versicolor
+  rabel_y:Petal.W..Virginica
+sokan[60]
+  rabel_x:Sepal.L..Virginica
+  rabel_y:Sepal.W..Virginica
+sokan[61]
+  rabel_x:Sepal.L..Virginica
+  rabel_y:Petal.L..Virginica
+sokan[62]
+  rabel_x:Sepal.L..Virginica
+  rabel_y:Petal.W..Virginica
+sokan[63]
+  rabel_x:Sepal.W..Virginica
+  rabel_y:Petal.L..Virginica
+sokan[64]
+  rabel_x:Sepal.W..Virginica
+  rabel_y:Petal.W..Virginica
+sokan[65]
+  rabel_x:Petal.L..Virginica
+  rabel_y:Petal.W..Virginica

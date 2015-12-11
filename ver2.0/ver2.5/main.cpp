@@ -1,6 +1,6 @@
 #include "bigdata.hpp"
 #include "head.hpp"
-#include "statistics.hpp"
+#include "func.hpp"
 #include "filter.hpp"
 #include "check.hpp"
 
