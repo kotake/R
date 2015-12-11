@@ -78,7 +78,6 @@ class all_data{
 				point set(double vx, double vy, int cluster);
 				//vector<point> cluster;//K個
 				vector<point> p;//全く分からない個
-				point pp;
 		};
 		class aso_data{//わかんない個
 			public:
