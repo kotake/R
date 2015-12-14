@@ -2,7 +2,7 @@
 #include "head.hpp"
 #include "func.hpp"
 #include "filter.hpp"
-#include "check.hpp"
+//#include "check.hpp"
 
 int main(){
 
@@ -25,12 +25,12 @@ int main(){
 	cout <<"-----------------------------------------"<<endl;
 
 	//allからafter_filにコピー
-	fil_kmeans(mydata);
-	fil_r(mydata);
+	fil_kmeans(&mydata);
+	fil_r(&mydata);
 
 	print(mydata);
 
-	write(mydata);//ファイル書き込み
+	write(&mydata);//ファイル書き込み
 
 	cout << "Complete!!!" <<endl;
 

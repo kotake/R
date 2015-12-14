@@ -1,6 +1,6 @@
 #include "head.hpp"
 
-int conb(int n, int r)
+int conb(const int n, const int r)
 {
 	if(n < 0 || r < 0 || n < r) return 0;
 	if(!r) return 1;
@@ -8,7 +8,7 @@ int conb(int n, int r)
 }
 
 //収束判定(各点が属するクラスタが変化しないかどうか)
-bool isEqual(vector<int> a, vector<int> b){
+bool isEqual(const vector<int> a, const vector<int> b){
 	for(unsigned int i=0; i<a.size(); i++){
 		if(a[i]!=b[i]) return false;
 	}
@@ -17,17 +17,17 @@ bool isEqual(vector<int> a, vector<int> b){
 
 
 //2点間の距離
-double P::dist(P a, P b){
+double P::dist(const P a, const P b){
 	return sqrt((a.x-b.x)*(a.x-b.x) + (a.y-b.y)*(a.y-b.y));
 }
 
 //template <class T>
-void CSVData::save_to(string filename){
+void CSVData::save_to(const string filename){
 
 }
 
 //template <class T>
-void CSVData::load_from(string filename){
+void CSVData::load_from(const string filename){
 
 	//CSVData object;
 
@@ -71,8 +71,6 @@ void CSVData::load_from(string filename){
 	}
 	row_num = row_num - 1;
 
-
-
 	//2行目から読み込む
 	while(getline(fin, line)){
 		stringstream s2;
@@ -102,55 +100,57 @@ void CSVData::load_from(string filename){
 
 }
 
-void write(all_data D){
+void write(const all_data *D){
 	if(mkdir("after_fil",777)==0)
 		cout << "フォルダafter_filを作成しました"<<endl;
 
 	//sokan
-	if(D.mysd.size()!=0){
+	if(D->mysd.size()!=0){
 		//ファイルポインタ獲得
 		ofstream ofs("after_fil/sokan_data.txt");
-		for(int i = 0; i < D.mysd.size(); i++){
+		for(int i = 0; i < D->mysd.size(); i++){
 			ofs << "sokan["<<i<<"]"<<endl;
-			ofs << "  rabel_x:" << D.mysd[i].rab_x << endl;
-			ofs << "  rabel_y:" << D.mysd[i].rab_y << endl;
+			ofs << "  rabel_x:" << D->mysd[i].rab_x << endl;
+			ofs << "  rabel_y:" << D->mysd[i].rab_y << endl;
 		}
 		ofs.close();
 	}
 
 	//kmeans
-	if(D.mykd.size()!=0){
+	if(D->mykd.size()!=0){
 		//ファイルポインタ獲得
 		ofstream ofs("after_fil/kmeans_data.txt");
-		for(int i = 0; i < D.mykd.size(); i++){
+		for(int i = 0; i < D->mykd.size(); i++){
 			ofs << "kmeans["<<i<<"]"<<endl;
-			ofs << "  rabel_x:" << D.mysd[i].rab_x << endl;
-			ofs << "  rabel_y:" << D.mysd[i].rab_y << endl;
-			for(int j=0;j<D.mykd[i].p.size();j++){
+			ofs << "  rabel_x:" << D->mykd[i].rab_x << endl;
+			ofs << "  rabel_y:" << D->mykd[i].rab_y << endl;
+			for(int j=0;j<D[0].mykd[i].p.size();j++){
 				ofs << "    mykd["<<i<<"]:"<<"point["<<j<<"]:";
-				ofs << "("<<D.mykd[i].p[j].x<<", ";
-				ofs << D.mykd[i].p[j].y<<", ";
-				ofs << D.mykd[i].p[j].cluster<<")"<< endl;
+				ofs << "("<<D->mykd[i].p[j].x<<", ";
+				ofs << D->mykd[i].p[j].y<<", ";
+				ofs << D->mykd[i].p[j].cluster<<")"<< endl;
 			}
 		}
 		ofs.close();
 	}
+	else cout << "書き換えませんでした"<<endl;
 
 	//aso
-	if(D.myad.size()!=0){
+	if(D->myad.size()!=0){
 		//ファイルポインタ獲得
 		ofstream ofs("after_fil/aso_data.txt");
-		for(int i = 0; i < D.myad.size(); i++){
+		for(int i = 0; i < D->myad.size(); i++){
 			ofs << "aso["<<i<<"]"<<endl;
-			ofs << "  lhs:" << D.myad[i].lhs << ", ";
-			ofs << "rhs:" << D.myad[i].rhs << ", ";
-			ofs << "support:" << D.myad[i].support << ", ";
-			ofs << "confidence:" << D.myad[i].confidence << ", ";
-			ofs << "lift:" << D.myad[i].lift << ", ";
+			ofs << "  lhs:" << D->myad[i].lhs << ", ";
+			ofs << "rhs:" << D->myad[i].rhs << ", ";
+			ofs << "support:" << D->myad[i].support << ", ";
+			ofs << "confidence:" << D->myad[i].confidence << ", ";
+			ofs << "lift:" << D->myad[i].lift << ", ";
 			ofs << endl;
 		}
 		ofs.close();
 	}
+
 }
 
 void folder_check(){

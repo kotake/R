@@ -14,10 +14,16 @@ void print(all_data D){
 	//k-means
 	for(int i =0;i < D.mykd.size() ; i++){
 		cout << "kmeans["<<i<<"]"<<endl;
-		cout << "  rabel_x:" << D.mysd[i].rab_x << endl;
-		cout << "  rabel_y:" << D.mysd[i].rab_y << endl;
+		cout << "  rabel_x:" << D.mykd[i].rab_x << endl;
+		cout << "  rabel_y:" << D.mykd[i].rab_y << endl;
+		for(int j=0;j<D.mykd[i].c_vec.size();j++){
+			cout << "    mykd["<<i<<"]:"<<"c_vec["<<j<<"]:";
+			cout << "("<<D.mykd[i].c_vec[j].x<<", ";
+			cout << D.mykd[i].c_vec[j].y<<", ";
+			cout << D.mykd[i].c_vec[j].cluster<<")"<< endl;
+		}
 		for(int j=0;j<D.mykd[i].p.size();j++){
-			cout << "    mykd["<<i<<"]:"<<"point["<<j<<"]:";
+			cout << "    mykd["<<i<<"]:"<<"pt["<<j<<"]:";
 			cout << "("<<D.mykd[i].p[j].x<<", ";
 			cout << D.mykd[i].p[j].y<<", ";
 			cout << D.mykd[i].p[j].cluster<<")"<< endl;
