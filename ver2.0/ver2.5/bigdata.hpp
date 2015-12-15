@@ -10,8 +10,6 @@ void all_data::all(CSVData &data){
 
 	mysd = mybd.sokan(data);//mydataの中のmysdにアクセス
 	mykd = mybd.kmeans(data);//mydataの中のmykdにアクセス
-	cout<<"mykd.k[0]:"<< mykd[0].rab_x<<endl;
-	
 	myad = mybd.aso(data);//all_data::aso_data
 
 }
@@ -21,6 +19,14 @@ void sokan_data::set(string r_x, string r_y, double vr){
 	rab_y = r_y;
 	r = vr;
 }
+
+void P::set(double vx,double vy, int vc){
+	x = vx;
+	y = vy;
+	cluster = vc;
+}
+
+
 
 vector<sokan_data> Bigdata::sokan(const CSVData &mycsv){
 	//cout << "sokan start"<<endl;
@@ -42,8 +48,10 @@ vector<sokan_data> Bigdata::sokan(const CSVData &mycsv){
 	for(int x = 0; x < conb(mycsv.get_col(),2); x++){
 		sokanf << "[ " << order[0]<<"列目と"<<order[1]<<"列目 ]"<<endl;
 		for(int y=0 ;y < mycsv.get_col() ;y++){
-			input[y].x = mycsv.csv_data[y * mycsv.get_col() + order[0]];
-			input[y].y = mycsv.csv_data[y * mycsv.get_col() + order[1]];
+			input[y].set(mycsv.csv_data[y * mycsv.get_col() + order[0]],
+					mycsv.csv_data[y * mycsv.get_col() + order[1]]);
+			//input[y].x = mycsv.csv_data[y * mycsv.get_col() + order[0]];
+			//input[y].y = mycsv.csv_data[y * mycsv.get_col() + order[1]];
 		}
 
 		double r=0;
@@ -51,18 +59,18 @@ vector<sokan_data> Bigdata::sokan(const CSVData &mycsv){
 		double chi=0,mo1=0,mo2=0;
 		vector<double> tmp_x,tmp_y;
 		for(int i=0; i < mycsv.get_row(); i++){
-			tmp_x.push_back(input[i].x);
+			tmp_x.push_back(input[i].get_x());
 		}
 		x_avg = accumulate(tmp_x.begin(), tmp_x.end(), 0.0)/(double)mycsv.get_row();
 		for(int i=0;i<mycsv.get_row();i++){
-			tmp_y.push_back(input[i].y);
+			tmp_y.push_back(input[i].get_y());
 		}
 		y_avg = accumulate(tmp_y.begin(),tmp_y.end(),0.0)/(double)mycsv.get_row();
 
 		for(int i =0;i < mycsv.get_row();i++){
-			chi += (input[i].x - x_avg) * (input[i].y - y_avg);
-			mo1 += pow((input[i].x - x_avg),2.0);
-			mo2 += pow((input[i].y - y_avg),2.0);
+			chi += (input[i].get_x() - x_avg) * (input[i].get_y() - y_avg);
+			mo1 += pow((input[i].get_x() - x_avg),2.0);
+			mo2 += pow((input[i].get_y() - y_avg),2.0);
 		}
 		r = chi / (sqrt(mo1)*sqrt(mo2));
 		sokanf <<"相関係数:"<< r << endl << endl;
@@ -80,160 +88,153 @@ void kmeans_data::set(string r_x, string r_y){
 	rab_x = r_x;
 	rab_y = r_y;
 }
-P kmeans_data::set(double x, double y){
-	P p;
-	p.x=x;
-	p.y=y;
-	return p;
+//自分とvとの距離
+double P::dist(const P v){
+	return sqrt((x-v.x)*(x-v.x) + (y-v.y)*(y-v.y));
 }
 
-P kmeans_data::set(P vp, int vc){
-	P p;
-	p = vp;
-	p.cluster = vc;
-	return p;
+vector<P> kmeans_data::assign_c(vector<P> &p){
+	//for(int y=0;y<mycsv.get_row();y++){
+	//	k.p.push_back(k.set(mycsv.csv_data[y*mycsv.get_col()+order[0]], 
+	//				mycsv.csv_data[y*mycsv.get_col()+order[1]]));
+	//}
+
+	//Kmeansによるクラスタリング
+	vector<int> prev_cluster, cluster; //各点のクラスタ番号
+
+	for(int i=0; i<p.size(); i++){
+		prev_cluster.push_back(0);
+		cluster.push_back(-1);
+	}
+
+	random_device rnd;     // 非決定的な乱数生成器
+	mt19937 mt(rnd());            // メルセンヌ・ツイスタの32ビット版、引数は初期シード
+	//クラスタの初期値を入力データからランダムに決定
+	for (int i = 0; i < K; ++i) {
+		int rand = mt() % p.size();
+
+		//vec_m.push_back(P(0,0));
+		//vec_m[i] = input[rand];
+		c_vec.push_back(p[rand]);
+	}
+
+	//位置が変わらないまで
+	while(!isEqual(prev_cluster, cluster)){
+		prev_cluster = cluster;
+
+		//入力ベクトルの分割
+		for(int i=0; i<p.size(); i++){
+			int argmax_cluster = -1;
+			double argmax_value = INF;
+			//一番類似度の高い(距離が一番近い)クラスタにする
+			for(int j=0; j<K; j++){
+				if(argmax_value > p[i].dist(c_vec[j])){
+					argmax_value = p[i].dist(c_vec[j]);
+					argmax_cluster = j;
+				}
+			}
+			cluster[i] = argmax_cluster;
+			p[i].c_update(cluster[i]);
+		}
+
+		//cout<<"asdf:"<< p[0].get_cluster() << endl;
+
+		//代表ベクトルの再計算
+		for(int i=0; i<K; i++){
+			int cnt = 0;
+			//k.c_vec[i].x = 0;
+			//k.c_vec[i].y = 0;
+			double cx = 0, cy = 0;
+			for(int j=0; j < p.size(); j++){
+				if(cluster[j]==i){
+					cx += p[j].get_x();
+					cy += p[j].get_y();
+					cnt++;
+				}
+			}
+			if(cnt!=0){
+				cx /= cnt;
+				cy /= cnt;
+			}
+			c_vec[i].set(cx,cy);
+		}
+	}
+
+	//クラスタごとの標準偏差を計算
+	//for(int i=0;i<K;i++){
+	//	SD[i] = 0;
+	//}
+	for(int i = 0; i < K; i++){
+		double avg = 0,tmp = 0;
+		int count = 0;
+		for(int j = 0; j < p.size(); j++){
+			if(cluster[j]==i){
+				tmp += p[j].dist(c_vec[i]);
+				count++;
+			}
+		} 
+		avg = tmp / (double)count;
+		tmp = 0;
+		for(int j = 0; j < p.size(); j++){
+			double hensa = p[j].dist(c_vec[i]) - avg;
+			tmp += hensa * hensa;
+			//SD[i] = sqrt(tmp / (double)count);
+		}
+	}
+
+	//max,min
+	//for(int i = 0; i < K; i++){
+	//	if(SD_max[i] < SD[i]) SD_max[i] = SD[i];
+	//	if(SD_min[i] > SD[i]) SD_min[i] = SD[i];
+	//}
+
+	//for(int i = 0; i < K; i++){
+	//	sdf << "クラスタ["<<i<<"]の標準偏差:"<< SD[i] << "	現在--->最大値:" << SD_max[i] <<" 最小値:" << SD_min[i] << endl;
+	//}
+	//sdf << endl;
+
+	return c_vec;
 }
+
+
 
 //エントリポイント
 vector<kmeans_data> Bigdata::kmeans(const CSVData &mycsv){
 
 	//cout << "kmeans start"<<endl;
-	double SD_max[K], SD_min[K];
+	/*double SD_max[K], SD_min[K];
 	for(int x=0;x<K;x++){
 		SD_max[x] = 0;
 		SD_min[x] = INT_MAX;
-	}
+	}*/
 
 	vector<kmeans_data> kmeans;//返り値宣言
 
 	//あらかじめこの中にすべてのorderの値を入れておく
 	vector<int> order;
-	for(int y =0;y<mycsv.get_col();y++){
+	for(int y =0;y < mycsv.get_col();y++){
 		order.push_back(y);
 	}
 
 	cout << "kmeans conb:"<< conb(mycsv.get_col(),2) <<endl;
-	for(int x=0;x<conb(mycsv.get_col(),2);x++){
+	for(int x=0;x<conb(mycsv.get_col(),2);x++){//nC2回
 
-		kmeans_data k;//nC2個
-
+		kmeans_data k;
 		k.set(mycsv.rabel[order[0]], mycsv.rabel[order[1]]);
 
-		for(int y=0;y<mycsv.get_row();y++){
-			k.p.push_back(k.set(mycsv.csv_data[y*mycsv.get_col()+order[0]], mycsv.csv_data[y*mycsv.get_col()+order[1]]));
+		for(int y=0;y<mycsv.get_row();y++){//データ数だけ回る
+			P pp;
+			pp.set(mycsv.csv_data[y*mycsv.get_col()+order[0]], 
+					mycsv.csv_data[y*mycsv.get_col()+order[1]]);
+			k.p.push_back(pp);
 		}
-
-		//Kmeansによるクラスタリング
-		vector<int> prev_cluster, cluster; //各点のクラスタ番号
-
-		for(int i=0; i<mycsv.get_row(); i++){
-			prev_cluster.push_back(0);
-			cluster.push_back(-1);
-		}
-
-		random_device rnd;     // 非決定的な乱数生成器
-		mt19937 mt(rnd());            // メルセンヌ・ツイスタの32ビット版、引数は初期シード
-		//クラスタの初期値を入力データからランダムに決定
-		for (int i = 0; i < K; ++i) {
-			int rand = mt() % mycsv.get_row();
-
-			//vec_m.push_back(P(0,0));
-			//vec_m[i] = input[rand];
-			k.c_vec.push_back(k.p[rand]);
-		}
-
-		//位置が変わらないまで
-		while(!isEqual(prev_cluster, cluster)){
-			prev_cluster = cluster;
-
-			//入力ベクトルの分割
-			for(int i=0; i<mycsv.get_row(); i++){
-				int argmax_cluster = -1;
-				double argmax_value = INF;
-				//一番類似度の高い(距離が一番近い)クラスタにする
-				for(int j=0; j<K; j++){
-					if(argmax_value > P::dist(k.p[i], k.c_vec[j])){
-						argmax_value = P::dist(k.p[i], k.c_vec[j]);
-						argmax_cluster = j;
-					}
-				}
-				cluster[i] = argmax_cluster;
-				k.p[i].cluster = cluster[i];
-			}
-
-			//代表ベクトルの再計算
-			for(int i=0; i<K; i++){
-				int cnt = 0;
-				k.c_vec[i].x = 0;
-				k.c_vec[i].y = 0;
-				for(int j=0; j < mycsv.get_row(); j++){
-					if(cluster[j]==i){
-						k.c_vec[i].x += k.p[j].x;
-						k.c_vec[i].y += k.p[j].y;
-						cnt++;
-					}
-				}
-				if(cnt!=0){
-					k.c_vec[i].x /= cnt;
-					k.c_vec[i].y /= cnt;
-				}
-			}
-		}
+		k.c_vec = k.assign_c(k.p);//クラスタ数割り当て
+		//cout<<"k.p.size():"<<k.p.size()<<endl;
+		//cout<<"k.p.get_x():"<<k.p[0].get_x()<<endl;
 
 
-		//結果の出力(gnuplot用)
-		stringstream output_name;
-		output_name << "all/k-means/output/out" << x << ".txt";
-
-		//クラスタごとに座標をファイルに書き込み
-		ofstream fout;
-		fout.open(output_name.str());
-
-		for(int i=0; i<K; i++){
-			for(int j=0; j<mycsv.get_row(); j++){
-				if(cluster[j]==i){
-					fout << k.p[j].x << " " << k.p[j].y << endl;
-				}
-			}
-			fout << endl << endl; //次のクラスタ
-		}
-		fout.close();
-
-
-		//クラスタごとの標準偏差を計算
-		//for(int i=0;i<K;i++){
-		//	SD[i] = 0;
-		//}
-		for(int i = 0; i < K; i++){
-			double avg = 0,tmp = 0;
-			int count = 0;
-			for(int j = 0; j < mycsv.get_row(); j++){
-				if(cluster[j]==i){
-					tmp += P::dist(k.p[j], k.c_vec[i]);
-					count++;
-				}
-			} 
-			avg = tmp / (double)count;
-			tmp = 0;
-			for(int j = 0; j < mycsv.get_row(); j++){
-				double hensa = P::dist(k.p[j],k.c_vec[i]) - avg;
-				tmp += hensa * hensa;
-				//SD[i] = sqrt(tmp / (double)count);
-			}
-		}
-
-		//max,min
-		//for(int i = 0; i < K; i++){
-		//	if(SD_max[i] < SD[i]) SD_max[i] = SD[i];
-		//	if(SD_min[i] > SD[i]) SD_min[i] = SD[i];
-		//}
-
-		//for(int i = 0; i < K; i++){
-		//	sdf << "クラスタ["<<i<<"]の標準偏差:"<< SD[i] << "	現在--->最大値:" << SD_max[i] <<" 最小値:" << SD_min[i] << endl;
-		//}
-		//sdf << endl;
-
-		gnuplot(mycsv, x, order[0], order[1]);
+		//gnuplot(mycsv, x, order[0], order[1]);
+		gnuplot(k, x);
 
 		kmeans.push_back(k);
 		//cout << k.p[0].x << endl;
@@ -241,12 +242,12 @@ vector<kmeans_data> Bigdata::kmeans(const CSVData &mycsv){
 		next_combination(order.begin(),order.begin()+2,order.end());
 	}
 
-	cout << "p.rab:"<< kmeans[0].rab_x<<", "<<kmeans[0].rab_y<<endl;
-	cout << "p.size():"<< kmeans[0].p.size()<<endl;
-	cout << "x:"<< kmeans[0].p[0].x <<endl;
-	cout << "y:"<< kmeans[0].p[0].y <<endl;
+	//cout << "p.rab:"<< kmeans[0].rab_x<<", "<<kmeans[0].rab_y<<endl;
+	//cout << "p.size():"<< kmeans[0].p.size()<<endl;
+	//cout << "x:"<< kmeans[0].p[0].x <<endl;
+	//cout << "y:"<< kmeans[0].p[0].y <<endl;
 
-	cout << "c_vec.size():"<< kmeans[0].c_vec.size()<<endl;
+	//cout << "c_vec.size():"<< kmeans[0].c_vec.size()<<endl;
 
 	//sdf.close();
 	return kmeans;
@@ -289,7 +290,6 @@ void aso_data::to_var(ifstream &ifs){
 			s = tmp + s;
 		};
 
-
 		if(i==0)continue;
 		if(i==1)lhs = s;
 		if(i==2)continue;
@@ -316,7 +316,6 @@ void aso_data::to_var(ifstream &ifs){
 			lift = d;
 		}
 	}
-
 }
 
 vector<aso_data> Bigdata::aso(const CSVData &mycsv){
@@ -395,12 +394,34 @@ vector<aso_data> Bigdata::aso(const CSVData &mycsv){
 	return aso;
 }
 
-void Bigdata::gnuplot(const CSVData &mycsv, const int &sheet_num, const int &rab_x, const int &rab_y) const
+void Bigdata::gnuplot(const kmeans_data &k, const int &sheet_num) const
 {
+	//結果の出力(gnuplot用)
+	stringstream output_name;
+	output_name << "all/k-means/output/out" << sheet_num << ".txt";
+
+	//クラスタごとに座標をファイルに書き込み
+	ofstream fout;
+	fout.open(output_name.str());
+
+	//cout<<"k.p.size():"<<k.p.size()<<endl;
+	//cout<<"k.p.get_x():"<<k.p[0].get_x()<<endl;
+	//cout<<"k.p.get_y():"<<k.p[0].get_y()<<endl;
+	//cout<<"k.p.get_cluster():"<<k.p[0].get_cluster()<<endl;
+	for(int i=0; i<K; i++){
+		for(int j=0; j < k.p.size(); j++){
+			if(k.p[j].get_cluster()==i){
+				fout << k.p[j].get_x() << " " << k.p[j].get_y() << endl;
+			}
+		}
+		fout << endl << endl; //次のクラスタ
+	}
+	fout.close();
+
 	FILE* gnuplot = popen("gnuplot", "w");
 	fprintf(gnuplot, "set term png\n");	fprintf(gnuplot, "set output \"all/k-means/graph/result%02d.png\"\n",sheet_num);
-	fprintf(gnuplot, "set xl \"%s\"\n", mycsv.rabel[rab_x].c_str());
-	fprintf(gnuplot, "set yl \"%s\"\n", mycsv.rabel[rab_y].c_str());
+	fprintf(gnuplot, "set xl \"%s\"\n", k.get_rab_x().c_str());
+	fprintf(gnuplot, "set yl \"%s\"\n", k.get_rab_y().c_str());
 	fprintf(gnuplot, "plot \"all/k-means/output/out%d.txt\" ",sheet_num);
 	for(int i=0;i<K;i++){
 		fprintf(gnuplot, "index %d",i);

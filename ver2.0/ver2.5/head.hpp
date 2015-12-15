@@ -49,7 +49,10 @@ class CSVData{//csvファイルの入力数
 class sokan_data{//nC2個
 	public:
 		void set(string r_x, string r_y, double vr);
-		//private:
+		string get_rab_x()const{return rab_x;};
+		string get_rab_y()const{return rab_y;};
+		double get_r()const{return r;};
+		private:
 		string rab_x;
 		string rab_y;
 		double r;
@@ -58,24 +61,34 @@ class sokan_data{//nC2個
 //all_dataクラスが内包するkmeans_dataクラスの内包クラス
 class P{
 	public:
+		void set(double vx, double vy, int vc=-1);
+		//P set(double x,double y);
+		void c_update(int new_c){cluster = new_c;};
+		double dist(P v);
+		double get_x()const{return x;};
+		double get_y()const{return y;};
+		int get_cluster()const{return cluster;};
+	private:
 		double x;
 		double y;
 		int cluster;
-		static double dist(P a, P b);
+		//static double dist(P a, P b);
 };
 
 //all_dataクラスの内包クラス
 class kmeans_data{//nC2個
 	public:
-		//private:
-		string rab_x;
-		string rab_y;
-	public:
 		void set(string r_x, string r_y);
-		P set(P vp, int cluster);
-		P set(double x,double y);
+		//P set(P vp, int cluster);
+		vector<P> assign_c(vector<P> &p);
+		string get_rab_x() const{return rab_x;};
+		string get_rab_y() const{return rab_y;};
 		vector<P> c_vec;//K個
 		vector<P> p;//全く分からない個
+	private:
+		string rab_x;
+		string rab_y;
+
 };
 
 //all_dataクラスの内包クラス
@@ -83,7 +96,13 @@ class aso_data{//わかんない個
 	public:
 		void to_var(ifstream &ifs);
 		int get_col(ifstream &ifs);
-		//private:
+		string get_lhs() const{return lhs;};
+		string get_rhs() const{return rhs;};
+		double get_support() const{return support;};
+		double get_confidence() const{return confidence;};
+		double get_lift() const{return lift;};
+
+	private:
 		string lhs;
 		string rhs;
 		double support;
@@ -112,7 +131,7 @@ all_data::all_data(){
 class Bigdata{
 	public:
 		vector<kmeans_data> kmeans(const CSVData &mycsv);
-		void gnuplot (const CSVData &mycsv, const int &sheet_num, const int &rab_x, const int &rab_y) const;
+		void gnuplot (const kmeans_data &k, const int &sheet_num) const;
 		vector<sokan_data> sokan(const CSVData &mycsv);
 		vector<aso_data> aso(const CSVData &mycsv);
 
@@ -127,7 +146,7 @@ bool isEqual(vector<int> a, vector<int> b);
 int conb(int n, int r);
 
 //フィルター関数
-void fil_kmeans(all_data *data);
-void fil_r(all_data *data);
+//void fil_kmeans(all_data *data);
+//void fil_r(all_data *data);
 
 #endif /* HEADER_H */

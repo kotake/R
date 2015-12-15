@@ -28,9 +28,9 @@ int main(){
 	fil_kmeans(&mydata);
 	fil_r(&mydata);
 
-	print(mydata);
+	//print(mydata);
 
-	write(&mydata);//ファイル書き込み
+	write(mydata);//ファイル書き込み
 
 	cout << "Complete!!!" <<endl;
 

@@ -15,12 +15,6 @@ bool isEqual(const vector<int> a, const vector<int> b){
 	return true;
 }
 
-
-//2点間の距離
-double P::dist(const P a, const P b){
-	return sqrt((a.x-b.x)*(a.x-b.x) + (a.y-b.y)*(a.y-b.y));
-}
-
 //template <class T>
 void CSVData::save_to(const string filename){
 
@@ -100,35 +94,39 @@ void CSVData::load_from(const string filename){
 
 }
 
-void write(const all_data *D){
+void write(const all_data &D){
 	if(mkdir("after_fil",777)==0)
 		cout << "フォルダafter_filを作成しました"<<endl;
 
+	remove("after_fil/sokan_data.txt");
+	remove("after_fil/kmeans_data.txt");
+	remove("after_fil/aso_data.txt");
+
 	//sokan
-	if(D->mysd.size()!=0){
+	if(D.mysd.size()!=0){
 		//ファイルポインタ獲得
 		ofstream ofs("after_fil/sokan_data.txt");
-		for(int i = 0; i < D->mysd.size(); i++){
+		for(int i = 0; i < D.mysd.size(); i++){
 			ofs << "sokan["<<i<<"]"<<endl;
-			ofs << "  rabel_x:" << D->mysd[i].rab_x << endl;
-			ofs << "  rabel_y:" << D->mysd[i].rab_y << endl;
+			ofs << "  rabel_x:" << D.mysd[i].get_rab_x() << endl;
+			ofs << "  rabel_y:" << D.mysd[i].get_rab_y() << endl;
 		}
 		ofs.close();
 	}
 
 	//kmeans
-	if(D->mykd.size()!=0){
+	if(D.mykd.size()!=0){
 		//ファイルポインタ獲得
 		ofstream ofs("after_fil/kmeans_data.txt");
-		for(int i = 0; i < D->mykd.size(); i++){
+		for(int i = 0; i < D.mykd.size(); i++){
 			ofs << "kmeans["<<i<<"]"<<endl;
-			ofs << "  rabel_x:" << D->mykd[i].rab_x << endl;
-			ofs << "  rabel_y:" << D->mykd[i].rab_y << endl;
-			for(int j=0;j<D[0].mykd[i].p.size();j++){
+			ofs << "  rabel_x:" << D.mykd[i].get_rab_x() << endl;
+			ofs << "  rabel_y:" << D.mykd[i].get_rab_y() << endl;
+			for(int j=0;j<D.mykd[i].p.size();j++){
 				ofs << "    mykd["<<i<<"]:"<<"point["<<j<<"]:";
-				ofs << "("<<D->mykd[i].p[j].x<<", ";
-				ofs << D->mykd[i].p[j].y<<", ";
-				ofs << D->mykd[i].p[j].cluster<<")"<< endl;
+				ofs << "("<<D.mykd[i].p[j].get_x()<<", ";
+				ofs << D.mykd[i].p[j].get_y()<<", ";
+				ofs << D.mykd[i].p[j].get_cluster()<<")"<< endl;
 			}
 		}
 		ofs.close();
@@ -136,16 +134,16 @@ void write(const all_data *D){
 	else cout << "書き換えませんでした"<<endl;
 
 	//aso
-	if(D->myad.size()!=0){
+	if(D.myad.size()!=0){
 		//ファイルポインタ獲得
 		ofstream ofs("after_fil/aso_data.txt");
-		for(int i = 0; i < D->myad.size(); i++){
+		for(int i = 0; i < D.myad.size(); i++){
 			ofs << "aso["<<i<<"]"<<endl;
-			ofs << "  lhs:" << D->myad[i].lhs << ", ";
-			ofs << "rhs:" << D->myad[i].rhs << ", ";
-			ofs << "support:" << D->myad[i].support << ", ";
-			ofs << "confidence:" << D->myad[i].confidence << ", ";
-			ofs << "lift:" << D->myad[i].lift << ", ";
+			ofs << "  lhs:" << D.myad[i].get_lhs() << ", ";
+			ofs << "rhs:" << D.myad[i].get_rhs() << ", ";
+			ofs << "support:" << D.myad[i].get_support() << ", ";
+			ofs << "confidence:" << D.myad[i].get_confidence() << ", ";
+			ofs << "lift:" << D.myad[i].get_lift() << ", ";
 			ofs << endl;
 		}
 		ofs.close();
