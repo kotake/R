@@ -24,9 +24,9 @@ int main(){
 	//フィルタ
 	cout <<"-----------------------------------------"<<endl;
 
-	//allからafter_filにコピー
-	fil_kmeans(&mydata);
-	fil_r(&mydata);
+	//fil_kmeans(&mydata);
+	sort(mydata.mysd.begin(), mydata.mysd.end());
+	
 
 	//print(mydata);
 

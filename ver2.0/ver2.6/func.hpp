@@ -110,6 +110,7 @@ void write(const all_data &D){
 			ofs << "sokan["<<i<<"]"<<endl;
 			ofs << "  rabel_x:" << D.mysd[i].get_rab_x() << endl;
 			ofs << "  rabel_y:" << D.mysd[i].get_rab_y() << endl;
+			ofs << "  r:" << D.mysd[i].get_r() << endl;
 		}
 		ofs.close();
 	}

@@ -1,0 +1,264 @@
+sokan[0]
+  rabel_x:Sepal.L..Virginica
+  rabel_y:Petal.L..Virginica
+  r:0.905942
+sokan[1]
+  rabel_x:Sepal.L..Versicolor
+  rabel_y:Sepal.L..Virginica
+  r:0.897329
+sokan[2]
+  rabel_x:Sepal.L..Setosa
+  rabel_y:Sepal.L..Virginica
+  r:0.890658
+sokan[3]
+  rabel_x:Sepal.L..Versicolor
+  rabel_y:Petal.L..Virginica
+  r:0.889239
+sokan[4]
+  rabel_x:Sepal.L..Setosa
+  rabel_y:Petal.L..Virginica
+  r:0.884991
+sokan[5]
+  rabel_x:Sepal.L..Setosa
+  rabel_y:Sepal.L..Versicolor
+  r:0.88073
+sokan[6]
+  rabel_x:Petal.L..Versicolor
+  rabel_y:Petal.L..Virginica
+  r:0.861112
+sokan[7]
+  rabel_x:Petal.L..Versicolor
+  rabel_y:Sepal.L..Virginica
+  r:0.858462
+sokan[8]
+  rabel_x:Sepal.L..Versicolor
+  rabel_y:Petal.L..Versicolor
+  r:0.858411
+sokan[9]
+  rabel_x:Sepal.L..Setosa
+  rabel_y:Petal.L..Versicolor
+  r:0.848861
+sokan[10]
+  rabel_x:Sepal.W..Setosa
+  rabel_y:Petal.L..Virginica
+  r:0.820295
+sokan[11]
+  rabel_x:Sepal.W..Setosa
+  rabel_y:Petal.L..Versicolor
+  r:0.818003
+sokan[12]
+  rabel_x:Sepal.W..Setosa
+  rabel_y:Sepal.L..Versicolor
+  r:0.81213
+sokan[13]
+  rabel_x:Sepal.W..Setosa
+  rabel_y:Sepal.L..Virginica
+  r:0.811486
+sokan[14]
+  rabel_x:Sepal.L..Setosa
+  rabel_y:Sepal.W..Setosa
+  r:0.808083
+sokan[15]
+  rabel_x:Sepal.W..Versicolor
+  rabel_y:Petal.L..Versicolor
+  r:0.796574
+sokan[16]
+  rabel_x:Sepal.W..Virginica
+  rabel_y:Petal.L..Virginica
+  r:0.789775
+sokan[17]
+  rabel_x:Sepal.W..Setosa
+  rabel_y:Sepal.W..Virginica
+  r:0.785366
+sokan[18]
+  rabel_x:Petal.L..Versicolor
+  rabel_y:Sepal.W..Virginica
+  r:0.77285
+sokan[19]
+  rabel_x:Sepal.L..Setosa
+  rabel_y:Sepal.W..Virginica
+  r:0.772687
+sokan[20]
+  rabel_x:Sepal.W..Setosa
+  rabel_y:Sepal.W..Versicolor
+  r:0.772636
+sokan[21]
+  rabel_x:Sepal.W..Versicolor
+  rabel_y:Sepal.W..Virginica
+  r:0.77013
+sokan[22]
+  rabel_x:Sepal.W..Versicolor
+  rabel_y:Petal.L..Virginica
+  r:0.768339
+sokan[23]
+  rabel_x:Sepal.L..Setosa
+  rabel_y:Sepal.W..Versicolor
+  r:0.752459
+sokan[24]
+  rabel_x:Sepal.W..Versicolor
+  rabel_y:Sepal.L..Virginica
+  r:0.749742
+sokan[25]
+  rabel_x:Sepal.L..Versicolor
+  rabel_y:Sepal.W..Virginica
+  r:0.740271
+sokan[26]
+  rabel_x:Sepal.L..Virginica
+  rabel_y:Sepal.W..Virginica
+  r:0.738271
+sokan[27]
+  rabel_x:Sepal.L..Versicolor
+  rabel_y:Sepal.W..Versicolor
+  r:0.737777
+sokan[28]
+  rabel_x:Sepal.W..Virginica
+  rabel_y:Petal.W..Virginica
+  r:0.729116
+sokan[29]
+  rabel_x:Sepal.W..Versicolor
+  rabel_y:Petal.W..Virginica
+  r:0.724937
+sokan[30]
+  rabel_x:Sepal.W..Setosa
+  rabel_y:Petal.W..Virginica
+  r:0.714282
+sokan[31]
+  rabel_x:Petal.L..Setosa
+  rabel_y:Petal.W..Virginica
+  r:0.713106
+sokan[32]
+  rabel_x:Petal.W..Versicolor
+  rabel_y:Petal.W..Virginica
+  r:0.707104
+sokan[33]
+  rabel_x:Petal.L..Setosa
+  rabel_y:Petal.W..Versicolor
+  r:0.704592
+sokan[34]
+  rabel_x:Petal.L..Setosa
+  rabel_y:Sepal.W..Versicolor
+  r:0.695284
+sokan[35]
+  rabel_x:Petal.L..Setosa
+  rabel_y:Sepal.W..Virginica
+  r:0.694248
+sokan[36]
+  rabel_x:Petal.W..Versicolor
+  rabel_y:Sepal.W..Virginica
+  r:0.679474
+sokan[37]
+  rabel_x:Petal.L..Versicolor
+  rabel_y:Petal.W..Virginica
+  r:0.679173
+sokan[38]
+  rabel_x:Sepal.W..Versicolor
+  rabel_y:Petal.W..Versicolor
+  r:0.663599
+sokan[39]
+  rabel_x:Sepal.L..Setosa
+  rabel_y:Petal.W..Virginica
+  r:0.659841
+sokan[40]
+  rabel_x:Petal.W..Setosa
+  rabel_y:Petal.W..Versicolor
+  r:0.65775
+sokan[41]
+  rabel_x:Sepal.W..Setosa
+  rabel_y:Petal.L..Setosa
+  r:0.647305
+sokan[42]
+  rabel_x:Petal.L..Setosa
+  rabel_y:Petal.W..Setosa
+  r:0.635251
+sokan[43]
+  rabel_x:Petal.L..Setosa
+  rabel_y:Petal.L..Versicolor
+  r:0.633336
+sokan[44]
+  rabel_x:Petal.L..Virginica
+  rabel_y:Petal.W..Virginica
+  r:0.631177
+sokan[45]
+  rabel_x:Sepal.W..Setosa
+  rabel_y:Petal.W..Versicolor
+  r:0.628447
+sokan[46]
+  rabel_x:Sepal.L..Versicolor
+  rabel_y:Petal.W..Virginica
+  r:0.616456
+sokan[47]
+  rabel_x:Sepal.L..Virginica
+  rabel_y:Petal.W..Virginica
+  r:0.601265
+sokan[48]
+  rabel_x:Petal.W..Setosa
+  rabel_y:Petal.W..Virginica
+  r:0.600257
+sokan[49]
+  rabel_x:Petal.L..Versicolor
+  rabel_y:Petal.W..Versicolor
+  r:0.578235
+sokan[50]
+  rabel_x:Petal.L..Setosa
+  rabel_y:Petal.L..Virginica
+  r:0.574673
+sokan[51]
+  rabel_x:Sepal.L..Setosa
+  rabel_y:Petal.L..Setosa
+  r:0.564147
+sokan[52]
+  rabel_x:Petal.L..Setosa
+  rabel_y:Sepal.L..Versicolor
+  r:0.556559
+sokan[53]
+  rabel_x:Petal.W..Versicolor
+  rabel_y:Petal.L..Virginica
+  r:0.548051
+sokan[54]
+  rabel_x:Petal.L..Setosa
+  rabel_y:Sepal.L..Virginica
+  r:0.540463
+sokan[55]
+  rabel_x:Sepal.L..Setosa
+  rabel_y:Petal.W..Versicolor
+  r:0.539787
+sokan[56]
+  rabel_x:Petal.W..Setosa
+  rabel_y:Sepal.W..Versicolor
+  r:0.521859
+sokan[57]
+  rabel_x:Petal.W..Versicolor
+  rabel_y:Sepal.L..Virginica
+  r:0.510493
+sokan[58]
+  rabel_x:Petal.W..Setosa
+  rabel_y:Sepal.W..Virginica
+  r:0.508138
+sokan[59]
+  rabel_x:Sepal.L..Versicolor
+  rabel_y:Petal.W..Versicolor
+  r:0.491357
+sokan[60]
+  rabel_x:Sepal.W..Setosa
+  rabel_y:Petal.W..Setosa
+  r:0.431374
+sokan[61]
+  rabel_x:Petal.W..Setosa
+  rabel_y:Petal.L..Versicolor
+  r:0.380946
+sokan[62]
+  rabel_x:Sepal.L..Setosa
+  rabel_y:Petal.W..Setosa
+  r:0.291057
+sokan[63]
+  rabel_x:Petal.W..Setosa
+  rabel_y:Petal.L..Virginica
+  r:0.276917
+sokan[64]
+  rabel_x:Petal.W..Setosa
+  rabel_y:Sepal.L..Versicolor
+  r:0.257008
+sokan[65]
+  rabel_x:Petal.W..Setosa
+  rabel_y:Sepal.L..Virginica
+  r:0.225948

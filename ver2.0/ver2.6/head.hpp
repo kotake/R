@@ -22,13 +22,6 @@
 #define INF 1000000000.0
 
 using namespace std;
-/*
-class P{
-	public:
-		double x, y;
-		P(double a, double b){x = a; y= b;};
-		static double dist(P a, P b);
-};*/
 
 class CSVData{//csvファイルの入力数
 	private:
@@ -52,10 +45,14 @@ class sokan_data{//nC2個
 		string get_rab_x()const{return rab_x;};
 		string get_rab_y()const{return rab_y;};
 		double get_r()const{return r;};
-		private:
+	private:
 		string rab_x;
 		string rab_y;
 		double r;
+	public:
+		bool operator< (const sokan_data& right) const{
+			return r == right.r ? rab_x > right.rab_x : r > right.r;
+		}
 };
 
 //all_dataクラスが内包するkmeans_dataクラスの内包クラス
@@ -120,6 +117,9 @@ class all_data{
 		vector<sokan_data> mysd;
 		vector<kmeans_data> mykd;
 		vector<aso_data> myad;
+		//ここにmethod()を書く。
+		void method1();
+		void method2();
 };
 
 all_data::all_data(){
@@ -135,8 +135,7 @@ class Bigdata{
 		vector<sokan_data> sokan(const CSVData &mycsv);
 		vector<aso_data> aso(const CSVData &mycsv);
 
-		//double SD[K];
-		void into_r(double a){r.push_back(a);};//相関係数
+		void into_r(double a){r.push_back(a);};//相関係数	
 	private:
 		string line,value;
 		vector<double> r;

@@ -5,12 +5,14 @@
 #include"check.hpp"
 
 void fil_kmeans(all_data *data){
-
+	
 	all_data kara;
 
 	kara.mykd = data->mykd;//(*data).mykdとも書ける
 
 	*data = kara;
+
+	//data->method();的な感じで書く。
 }
 
 void fil_r(all_data *data){
@@ -66,3 +68,13 @@ void fil_r(all_data *data){
 
 }
 
+/*
+void s_sort(vector<double> key, vector<sokan_data> *sd){
+	
+	if(key.size()!=sd->size())
+		cout << "サイズが一致していません"<<endl;
+
+	for(int i=0;i<sd->size();i++){
+		map<SD,data->mykd[i]>//キー、バリューの順
+	}
+}*/
