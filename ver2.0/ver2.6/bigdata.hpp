@@ -1,17 +1,36 @@
 #include "head.hpp"
 
 //この関数で3つの統計処理を行う
-void all_data::all(CSVData &data){
+void Platform::execute(){
 
-	Bigdata mybd;
+	//Bigdata mybd;
+	all_data tmp;
 
-	mysd = mybd.sokan(data);//mydataの中のmysdにアクセス
-	mykd = mybd.kmeans(data);//mydataの中のmykdにアクセス
-	myad = mybd.aso(data);//all_data::aso_data
+	//mysd = mybd.sokan(data);//mydataの中のmysdにアクセス
+	//mykd = mybd.kmeans(data);//mydataの中のmykdにアクセス
+	//myad = mybd.aso(data);//all_data::aso_data
 
+	list<Analyzer*>::iterator it_a = analyzer_list.begin();
+	for(int i=0;it_a!=analyzer_list.end();it_a++,i++){
+		tmp = (*it_a)->analyze(csv);//親all_data＝子all_data
+		if(tmp.mysd.size()!=0){
+			d.mysd = tmp.mysd;
+		}
+		if(tmp.mykd.size()!=0){
+			d.mykd = tmp.mykd;
+		}
+		if(tmp.myad.size()!=0){
+			d.myad = tmp.myad;
+		}
+	}
+
+	list<Filter*>::iterator it_f = filter_list.begin();
+	for(;it_f != filter_list.end();it_f++){
+		d = (*it_f)->filtering(&d);
+	}
 }
 
-void sokan_data::set(string r_x, string r_y, double vr){
+void Sokan::set(string r_x, string r_y, double vr){
 	rab_x = r_x;
 	rab_y = r_y;
 	r = vr;
@@ -25,7 +44,8 @@ void P::set(double vx,double vy, int vc){
 
 
 
-vector<sokan_data> Bigdata::sokan(const CSVData &mycsv){
+all_data Sokan::analyze(const CSVData &mycsv){
+	//vector<all_data> Sokan::analyze(const CSVData &mycsv){
 	//cout << "sokan start"<<endl;
 	vector<int> order;
 	vector<P> input;
@@ -33,8 +53,8 @@ vector<sokan_data> Bigdata::sokan(const CSVData &mycsv){
 	for(int x = 0; x < mycsv.get_col(); x++){
 		order.push_back(x);
 	}
-	vector<sokan_data> sokan;//返り値の宣言
-	sokan_data s;//これsをsokanにnC2回push_backする
+	vector<Sokan*> sokan;//返り値の宣言
+	Sokan* s = new Sokan();//これsをsokanにnC2回push_backする
 
 	stringstream output_name;
 	output_name << "all/correlation/output.txt";
@@ -69,17 +89,20 @@ vector<sokan_data> Bigdata::sokan(const CSVData &mycsv){
 		}
 		r = chi / (sqrt(mo1)*sqrt(mo2));
 		sokanf <<"相関係数:"<< r << endl << endl;
-		s.set(mycsv.rabel[order[0]], mycsv.rabel[order[1]], r);
+		s->set(mycsv.rabel[order[0]], mycsv.rabel[order[1]], r);
 		sokan.push_back(s);
 
 		next_combination(order.begin(),order.begin()+2,order.end());
 	}
 
 	sokanf.close();
-	return sokan;
+
+	all_data a;
+	a.mysd = sokan;
+	return a;
 }
 
-void kmeans_data::set(string r_x, string r_y){
+void Kmeans::set(string r_x, string r_y){
 	rab_x = r_x;
 	rab_y = r_y;
 }
@@ -88,7 +111,7 @@ double P::dist(const P v){
 	return sqrt((x-v.x)*(x-v.x) + (y-v.y)*(y-v.y));
 }
 
-vector<P> kmeans_data::assign_c(vector<P> &p){
+vector<P> Kmeans::assign_c(vector<P> &p){
 
 	//Kmeansによるクラスタリング
 	vector<int> prev_cluster, cluster; //各点のクラスタ番号
@@ -153,10 +176,11 @@ vector<P> kmeans_data::assign_c(vector<P> &p){
 
 
 //エントリポイント
-vector<kmeans_data> Bigdata::kmeans(const CSVData &mycsv){
+//vector<kmeans_data> Bigdata::kmeans(const CSVData &mycsv){
+all_data Kmeans::analyze(const CSVData &mycsv){
 
 	//cout << "kmeans start"<<endl;
-	vector<kmeans_data> kmeans;//返り値宣言
+	vector<Kmeans*> kmeans;//返り値宣言
 
 	//あらかじめこの中にすべてのorderの値を入れておく
 	vector<int> order;
@@ -167,16 +191,16 @@ vector<kmeans_data> Bigdata::kmeans(const CSVData &mycsv){
 	cout << "kmeans conb:"<< conb(mycsv.get_col(),2) <<endl;
 	for(int x=0;x<conb(mycsv.get_col(),2);x++){//nC2回
 
-		kmeans_data k;
-		k.set(mycsv.rabel[order[0]], mycsv.rabel[order[1]]);
+		Kmeans* k = new Kmeans();
+		k->set(mycsv.rabel[order[0]], mycsv.rabel[order[1]]);
 
 		for(int y=0;y<mycsv.get_row();y++){//データ数だけ回る
 			P pp;
 			pp.set(mycsv.csv_data[y*mycsv.get_col()+order[0]], 
 					mycsv.csv_data[y*mycsv.get_col()+order[1]]);
-			k.p.push_back(pp);
+			k->p.push_back(pp);
 		}
-		k.c_vec = k.assign_c(k.p);//クラスタ数割り当て
+		k->c_vec = k->assign_c(k->p);//クラスタ数割り当て
 
 		gnuplot(k, x);
 
@@ -184,12 +208,13 @@ vector<kmeans_data> Bigdata::kmeans(const CSVData &mycsv){
 
 		next_combination(order.begin(),order.begin()+2,order.end());
 	}
-
-	return kmeans;
+	all_data a;
+	a.mykd = kmeans;
+	return a;
 }
 
 //Rのアソシエーション分析出力結果専用の行数カウント関数
-int aso_data::get_col(ifstream &ifs){
+int Aso::get_col(ifstream &ifs){
 
 	int num = 0;
 	string s;
@@ -211,7 +236,7 @@ int aso_data::get_col(ifstream &ifs){
 	return num;
 }
 
-void aso_data::to_var(ifstream &ifs){
+void Aso::to_var(ifstream &ifs){
 	string s, tmp;
 
 	//ワードを一つずつ拾う
@@ -253,8 +278,8 @@ void aso_data::to_var(ifstream &ifs){
 	}
 }
 
-vector<aso_data> Bigdata::aso(const CSVData &mycsv){
-
+//vector<aso_data> Bigdata::aso(const CSVData &mycsv){
+all_data Aso::analyze(const CSVData &mycsv){
 	double d[mycsv.get_index()];
 	cout << "aso start" << endl;
 	for(int i = 0; i < mycsv.get_index(); i++){
@@ -294,14 +319,14 @@ vector<aso_data> Bigdata::aso(const CSVData &mycsv){
 	fflush(R);
 	//(void)pclose(R);
 
-	vector<aso_data> aso;//返り値宣言
-	aso_data a;
+	vector<Aso*> aso;//返り値宣言
+	Aso *a = new Aso();
 
 	ifstream ifs("all/association/foo.txt");
 
 	//ifs行数取得	
 	int col = 0;
-	col = a.get_col(ifs);
+	col = a->get_col(ifs);
 	cout << col<<endl;
 	ifs.clear();
 	ifs.seekg(0,ios_base::beg);
@@ -312,7 +337,7 @@ vector<aso_data> Bigdata::aso(const CSVData &mycsv){
 
 	//2行目以降
 	for(int i = 0; i < col; i++){
-		a.to_var(ifs);
+		a->to_var(ifs);
 		aso.push_back(a);
 	}
 
@@ -326,10 +351,12 @@ vector<aso_data> Bigdata::aso(const CSVData &mycsv){
 	   R.parseEval("capture.output(inspect(iris.ap))");
 	   R.parseEval("sink()");
 	   */
-	return aso;
+	all_data all;
+	all.myad = aso;
+	return all;
 }
 
-void Bigdata::gnuplot(const kmeans_data &k, const int &sheet_num) const
+void Kmeans::gnuplot(const Kmeans *k, const int &sheet_num) const
 {
 	//結果の出力(gnuplot用)
 	stringstream output_name;
@@ -340,9 +367,9 @@ void Bigdata::gnuplot(const kmeans_data &k, const int &sheet_num) const
 	fout.open(output_name.str());
 
 	for(int i=0; i<K; i++){
-		for(int j=0; j < k.p.size(); j++){
-			if(k.p[j].get_cluster()==i){
-				fout << k.p[j].get_x() << " " << k.p[j].get_y() << endl;
+		for(int j=0; j < k->p.size(); j++){
+			if(k->p[j].get_cluster()==i){
+				fout << k->p[j].get_x() << " " << k->p[j].get_y() << endl;
 			}
 		}
 		fout << endl << endl; //次のクラスタ
@@ -351,8 +378,8 @@ void Bigdata::gnuplot(const kmeans_data &k, const int &sheet_num) const
 
 	FILE* gnuplot = popen("gnuplot", "w");
 	fprintf(gnuplot, "set term png\n");	fprintf(gnuplot, "set output \"all/k-means/graph/result%02d.png\"\n",sheet_num);
-	fprintf(gnuplot, "set xl \"%s\"\n", k.get_rab_x().c_str());
-	fprintf(gnuplot, "set yl \"%s\"\n", k.get_rab_y().c_str());
+	fprintf(gnuplot, "set xl \"%s\"\n", k->get_rab_x().c_str());
+	fprintf(gnuplot, "set yl \"%s\"\n", k->get_rab_y().c_str());
 	fprintf(gnuplot, "plot \"all/k-means/output/out%d.txt\" ",sheet_num);
 	for(int i=0;i<K;i++){
 		fprintf(gnuplot, "index %d",i);
@@ -363,3 +390,5 @@ void Bigdata::gnuplot(const kmeans_data &k, const int &sheet_num) const
 	fflush(gnuplot); //バッファを書き出す
 	pclose(gnuplot);
 }
+
+

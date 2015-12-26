@@ -93,7 +93,7 @@ void CSVData::load_from(const string filename){
 	cout << "index:"<< index<<" row_num:"<< row_num << " col_num:"<< index / row_num << endl;
 
 }
-
+/*
 void write(const all_data &D){
 	if(mkdir("after_fil",777)==0)
 		cout << "フォルダafter_filを作成しました"<<endl;
@@ -151,7 +151,7 @@ void write(const all_data &D){
 	}
 
 }
-
+*/
 void folder_check(){
 	if(mkdir("all",777)==0){
 		cout << "フォルダallを作成しました"<<endl;

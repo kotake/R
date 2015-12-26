@@ -1,9 +1,11 @@
+
 #ifndef HEADER_H
 #define HEADER_H
 
 /* ... <header.h> の内容がここに入る */
 #include <iostream>
 #include <vector>
+#include <list>
 #include <cmath>
 #include <random>
 #include <sstream>
@@ -38,9 +40,32 @@ class CSVData{//csvファイルの入力数
 		int get_index() const{return index;};
 };
 
-//all_dataクラスの内包クラス
-class sokan_data{//nC2個
+/////////////////////////////////////
+
+//前方宣言
+class all_data;
+
+//分析クラス
+class Analyzer{//純粋仮想関数を書く
 	public:
+		Analyzer() {}
+		virtual all_data analyze(const CSVData &mycsv) = 0;
+		//vector<Kmeans> kmeans(const CSVData &mycsv);
+		//void gnuplot (const Kmeans &k, const int &sheet_num) const;
+		//vector<Sokan> sokan(const CSVData &mycsv);
+		//vector<Aso> aso(const CSVData &mycsv);
+		void into_r(double a){r.push_back(a);};//相関係数
+
+	private:
+		string line,value;
+		vector<double> r;
+};
+
+
+//all_dataクラスの内包クラス
+class Sokan : public Analyzer{//nC2個
+	public:
+		all_data analyze(const CSVData &mycsv);
 		void set(string r_x, string r_y, double vr);
 		string get_rab_x()const{return rab_x;};
 		string get_rab_y()const{return rab_y;};
@@ -50,7 +75,7 @@ class sokan_data{//nC2個
 		string rab_y;
 		double r;
 	public:
-		bool operator< (const sokan_data& right) const{
+		bool operator< (const Sokan& right) const{
 			return r == right.r ? rab_x > right.rab_x : r > right.r;
 		}
 };
@@ -72,12 +97,15 @@ class P{
 		//static double dist(P a, P b);
 };
 
+
 //all_dataクラスの内包クラス
-class kmeans_data{//nC2個
+class Kmeans : public Analyzer{//nC2個
 	public:
+		all_data analyze(const CSVData &mycsv);
 		void set(string r_x, string r_y);
 		//P set(P vp, int cluster);
 		vector<P> assign_c(vector<P> &p);
+		void gnuplot (const Kmeans *k, const int &sheet_num) const;
 		string get_rab_x() const{return rab_x;};
 		string get_rab_y() const{return rab_y;};
 		vector<P> c_vec;//K個
@@ -85,12 +113,12 @@ class kmeans_data{//nC2個
 	private:
 		string rab_x;
 		string rab_y;
-
 };
 
 //all_dataクラスの内包クラス
-class aso_data{//わかんない個
+class Aso : public Analyzer{//わかんない個
 	public:
+		all_data analyze(const CSVData &mycsv);
 		void to_var(ifstream &ifs);
 		int get_col(ifstream &ifs);
 		string get_lhs() const{return lhs;};
@@ -111,15 +139,12 @@ class aso_data{//わかんない個
 class all_data{
 	public:
 		all_data();
-		void all(CSVData &data);
+		//void all(CSVData &data);
 		void set_rabel(CSVData source);
-
-		vector<sokan_data> mysd;
-		vector<kmeans_data> mykd;
-		vector<aso_data> myad;
-		//ここにmethod()を書く。
-		void method1();
-		void method2();
+	//private:
+		vector<Sokan*> mysd;
+		vector<Kmeans*> mykd;
+		vector<Aso*> myad;
 };
 
 all_data::all_data(){
@@ -128,24 +153,52 @@ all_data::all_data(){
 	myad.clear();
 }
 
-class Bigdata{
-	public:
-		vector<kmeans_data> kmeans(const CSVData &mycsv);
-		void gnuplot (const kmeans_data &k, const int &sheet_num) const;
-		vector<sokan_data> sokan(const CSVData &mycsv);
-		vector<aso_data> aso(const CSVData &mycsv);
-
-		void into_r(double a){r.push_back(a);};//相関係数	
-	private:
-		string line,value;
-		vector<double> r;
-};
-
 bool isEqual(vector<int> a, vector<int> b);
 int conb(int n, int r);
 
-//フィルター関数
-//void fil_kmeans(all_data *data);
-//void fil_r(all_data *data);
+//フィルタークラス
+class Filter{//純粋仮想関数を書く
+	public:
+		Filter() {}
+		virtual all_data filtering(all_data *data) = 0;//なぜか純粋にするとエラー
+};
+
+//プラットフォームクラス
+class Platform{
+	public:
+		//Platform()=default;
+		void addAnalyzer(Analyzer *a);
+		void addFilter(Filter *a);
+		void input(string filename);
+		void execute();
+		void output();
+	private:
+		list<Analyzer*> analyzer_list;
+		list<Filter*> filter_list;
+		all_data d;
+		CSVData csv;
+		//vector<Sokan> mysd;
+		//vector<Kmeans> mykd;
+		//vector<Aso> myad;
+		//ここにmethod()を書く。
+		void method1();
+		void method2();
+};
+
+void Platform::addAnalyzer(Analyzer *a){
+	analyzer_list.push_back(a);
+}
+
+void Platform::addFilter(Filter *a){
+	filter_list.push_back(a);
+}
+
+void Platform::input(string filename){
+	csv.load_from(filename);
+}
+
+void Platform::output(){
+
+}
 
 #endif /* HEADER_H */

@@ -1,0 +1,23 @@
+main.cpp: 関数 ‘int main()’ 内:
+main.cpp:47:40: エラー: cannot allocate an object of abstract type ‘Fil_kmeans’
+  Fil_kmeans *f_kmeans = new Fil_kmeans();
+                                        ^
+In file included from main.cpp:3:0:
+filter.hpp:7:7: 備考:   because the following virtual functions are pure within ‘Fil_kmeans’:
+ class Fil_kmeans : public Filter{
+       ^
+In file included from main.cpp:1:0:
+head.hpp:163:20: 備考: 	virtual all_data Filter::filtering(all_data&)
+   virtual all_data filtering(all_data &data) = 0;//なぜか純粋にするとエラー
+                    ^
+main.cpp:48:25: エラー: cannot allocate an object of abstract type ‘Fil_r’
+  Fil_r *f_r = new Fil_r();
+                         ^
+In file included from main.cpp:3:0:
+filter.hpp:12:7: 備考:   because the following virtual functions are pure within ‘Fil_r’:
+ class Fil_r : public Filter{
+       ^
+In file included from main.cpp:1:0:
+head.hpp:163:20: 備考: 	virtual all_data Filter::filtering(all_data&)
+   virtual all_data filtering(all_data &data) = 0;//なぜか純粋にするとエラー
+                    ^
