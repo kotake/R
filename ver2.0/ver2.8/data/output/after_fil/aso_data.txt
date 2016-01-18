@@ -1,0 +1,320 @@
+aso[0]
+  lhs:{}, rhs:{Petal.L..Versicolor}, support:0.94, confidence:0.94, lift:1, 
+aso[1]
+  lhs:{}, rhs:{Petal.L..Virginica}, support:1, confidence:1, lift:1, 
+aso[2]
+  lhs:{}, rhs:{Sepal.L..Setosa}, support:1, confidence:1, lift:1, 
+aso[3]
+  lhs:{}, rhs:{Sepal.L..Versicolor}, support:1, confidence:1, lift:1, 
+aso[4]
+  lhs:{}, rhs:{Sepal.L..Virginica}, support:1, confidence:1, lift:1, 
+aso[5]
+  lhs:{Sepal.W..Setosa}, rhs:{Petal.L..Versicolor}, support:0.34, confidence:0.85, lift:0.904255, 
+aso[6]
+  lhs:{Sepal.W..Setosa}, rhs:{Petal.L..Virginica}, support:0.4, confidence:1, lift:1, 
+aso[7]
+  lhs:{Sepal.W..Setosa}, rhs:{Sepal.L..Setosa}, support:0.4, confidence:1, lift:1, 
+aso[8]
+  lhs:{Sepal.W..Setosa}, rhs:{Sepal.L..Versicolor}, support:0.4, confidence:1, lift:1, 
+aso[9]
+  lhs:{Sepal.W..Setosa}, rhs:{Sepal.L..Virginica}, support:0.4, confidence:1, lift:1, 
+aso[10]
+  lhs:{Petal.L..Versicolor}, rhs:{Petal.L..Virginica}, support:0.94, confidence:1, lift:1, 
+aso[11]
+  lhs:{Petal.L..Virginica}, rhs:{Petal.L..Versicolor}, support:0.94, confidence:0.94, lift:1, 
+aso[12]
+  lhs:{Petal.L..Versicolor}, rhs:{Sepal.L..Setosa}, support:0.94, confidence:1, lift:1, 
+aso[13]
+  lhs:{Sepal.L..Setosa}, rhs:{Petal.L..Versicolor}, support:0.94, confidence:0.94, lift:1, 
+aso[14]
+  lhs:{Petal.L..Versicolor}, rhs:{Sepal.L..Versicolor}, support:0.94, confidence:1, lift:1, 
+aso[15]
+  lhs:{Sepal.L..Versicolor}, rhs:{Petal.L..Versicolor}, support:0.94, confidence:0.94, lift:1, 
+aso[16]
+  lhs:{Petal.L..Versicolor}, rhs:{Sepal.L..Virginica}, support:0.94, confidence:1, lift:1, 
+aso[17]
+  lhs:{Sepal.L..Virginica}, rhs:{Petal.L..Versicolor}, support:0.94, confidence:0.94, lift:1, 
+aso[18]
+  lhs:{Petal.L..Virginica}, rhs:{Sepal.L..Setosa}, support:1, confidence:1, lift:1, 
+aso[19]
+  lhs:{Sepal.L..Setosa}, rhs:{Petal.L..Virginica}, support:1, confidence:1, lift:1, 
+aso[20]
+  lhs:{Petal.L..Virginica}, rhs:{Sepal.L..Versicolor}, support:1, confidence:1, lift:1, 
+aso[21]
+  lhs:{Sepal.L..Versicolor}, rhs:{Petal.L..Virginica}, support:1, confidence:1, lift:1, 
+aso[22]
+  lhs:{Petal.L..Virginica}, rhs:{Sepal.L..Virginica}, support:1, confidence:1, lift:1, 
+aso[23]
+  lhs:{Sepal.L..Virginica}, rhs:{Petal.L..Virginica}, support:1, confidence:1, lift:1, 
+aso[24]
+  lhs:{Sepal.L..Setosa}, rhs:{Sepal.L..Versicolor}, support:1, confidence:1, lift:1, 
+aso[25]
+  lhs:{Sepal.L..Versicolor}, rhs:{Sepal.L..Setosa}, support:1, confidence:1, lift:1, 
+aso[26]
+  lhs:{Sepal.L..Setosa}, rhs:{Sepal.L..Virginica}, support:1, confidence:1, lift:1, 
+aso[27]
+  lhs:{Sepal.L..Virginica}, rhs:{Sepal.L..Setosa}, support:1, confidence:1, lift:1, 
+aso[28]
+  lhs:{Sepal.L..Versicolor}, rhs:{Sepal.L..Virginica}, support:1, confidence:1, lift:1, 
+aso[29]
+  lhs:{Sepal.L..Virginica}, rhs:{Sepal.L..Versicolor}, support:1, confidence:1, lift:1, 
+aso[30]
+  lhs:{Petal.L..Versicolor,Sepal.W..Setosa}, rhs:{Petal.L..Virginica}, support:0.34, confidence:1, lift:1, 
+aso[31]
+  lhs:{Petal.L..Virginica,Sepal.W..Setosa}, rhs:{Petal.L..Versicolor}, support:0.34, confidence:0.85, lift:0.904255, 
+aso[32]
+  lhs:{Petal.L..Versicolor,Sepal.W..Setosa}, rhs:{Sepal.L..Setosa}, support:0.34, confidence:1, lift:1, 
+aso[33]
+  lhs:{Sepal.L..Setosa,Sepal.W..Setosa}, rhs:{Petal.L..Versicolor}, support:0.34, confidence:0.85, lift:0.904255, 
+aso[34]
+  lhs:{Petal.L..Versicolor,Sepal.W..Setosa}, rhs:{Sepal.L..Versicolor}, support:0.34, confidence:1, lift:1, 
+aso[35]
+  lhs:{Sepal.L..Versicolor,Sepal.W..Setosa}, rhs:{Petal.L..Versicolor}, support:0.34, confidence:0.85, lift:0.904255, 
+aso[36]
+  lhs:{Petal.L..Versicolor,Sepal.W..Setosa}, rhs:{Sepal.L..Virginica}, support:0.34, confidence:1, lift:1, 
+aso[37]
+  lhs:{Sepal.L..Virginica,Sepal.W..Setosa}, rhs:{Petal.L..Versicolor}, support:0.34, confidence:0.85, lift:0.904255, 
+aso[38]
+  lhs:{Petal.L..Virginica,Sepal.W..Setosa}, rhs:{Sepal.L..Setosa}, support:0.4, confidence:1, lift:1, 
+aso[39]
+  lhs:{Sepal.L..Setosa,Sepal.W..Setosa}, rhs:{Petal.L..Virginica}, support:0.4, confidence:1, lift:1, 
+aso[40]
+  lhs:{Petal.L..Virginica,Sepal.W..Setosa}, rhs:{Sepal.L..Versicolor}, support:0.4, confidence:1, lift:1, 
+aso[41]
+  lhs:{Sepal.L..Versicolor,Sepal.W..Setosa}, rhs:{Petal.L..Virginica}, support:0.4, confidence:1, lift:1, 
+aso[42]
+  lhs:{Petal.L..Virginica,Sepal.W..Setosa}, rhs:{Sepal.L..Virginica}, support:0.4, confidence:1, lift:1, 
+aso[43]
+  lhs:{Sepal.L..Virginica,Sepal.W..Setosa}, rhs:{Petal.L..Virginica}, support:0.4, confidence:1, lift:1, 
+aso[44]
+  lhs:{Sepal.L..Setosa,Sepal.W..Setosa}, rhs:{Sepal.L..Versicolor}, support:0.4, confidence:1, lift:1, 
+aso[45]
+  lhs:{Sepal.L..Versicolor,Sepal.W..Setosa}, rhs:{Sepal.L..Setosa}, support:0.4, confidence:1, lift:1, 
+aso[46]
+  lhs:{Sepal.L..Setosa,Sepal.W..Setosa}, rhs:{Sepal.L..Virginica}, support:0.4, confidence:1, lift:1, 
+aso[47]
+  lhs:{Sepal.L..Virginica,Sepal.W..Setosa}, rhs:{Sepal.L..Setosa}, support:0.4, confidence:1, lift:1, 
+aso[48]
+  lhs:{Sepal.L..Versicolor,Sepal.W..Setosa}, rhs:{Sepal.L..Virginica}, support:0.4, confidence:1, lift:1, 
+aso[49]
+  lhs:{Sepal.L..Virginica,Sepal.W..Setosa}, rhs:{Sepal.L..Versicolor}, support:0.4, confidence:1, lift:1, 
+aso[50]
+  lhs:{Petal.L..Versicolor,Petal.L..Virginica}, rhs:{Sepal.L..Setosa}, support:0.94, confidence:1, lift:1, 
+aso[51]
+  lhs:{Petal.L..Versicolor,Sepal.L..Setosa}, rhs:{Petal.L..Virginica}, support:0.94, confidence:1, lift:1, 
+aso[52]
+  lhs:{Petal.L..Virginica,Sepal.L..Setosa}, rhs:{Petal.L..Versicolor}, support:0.94, confidence:0.94, lift:1, 
+aso[53]
+  lhs:{Petal.L..Versicolor,Petal.L..Virginica}, rhs:{Sepal.L..Versicolor}, support:0.94, confidence:1, lift:1, 
+aso[54]
+  lhs:{Petal.L..Versicolor,Sepal.L..Versicolor}, rhs:{Petal.L..Virginica}, support:0.94, confidence:1, lift:1, 
+aso[55]
+  lhs:{Petal.L..Virginica,Sepal.L..Versicolor}, rhs:{Petal.L..Versicolor}, support:0.94, confidence:0.94, lift:1, 
+aso[56]
+  lhs:{Petal.L..Versicolor,Petal.L..Virginica}, rhs:{Sepal.L..Virginica}, support:0.94, confidence:1, lift:1, 
+aso[57]
+  lhs:{Petal.L..Versicolor,Sepal.L..Virginica}, rhs:{Petal.L..Virginica}, support:0.94, confidence:1, lift:1, 
+aso[58]
+  lhs:{Petal.L..Virginica,Sepal.L..Virginica}, rhs:{Petal.L..Versicolor}, support:0.94, confidence:0.94, lift:1, 
+aso[59]
+  lhs:{Petal.L..Versicolor,Sepal.L..Setosa}, rhs:{Sepal.L..Versicolor}, support:0.94, confidence:1, lift:1, 
+aso[60]
+  lhs:{Petal.L..Versicolor,Sepal.L..Versicolor}, rhs:{Sepal.L..Setosa}, support:0.94, confidence:1, lift:1, 
+aso[61]
+  lhs:{Sepal.L..Setosa,Sepal.L..Versicolor}, rhs:{Petal.L..Versicolor}, support:0.94, confidence:0.94, lift:1, 
+aso[62]
+  lhs:{Petal.L..Versicolor,Sepal.L..Setosa}, rhs:{Sepal.L..Virginica}, support:0.94, confidence:1, lift:1, 
+aso[63]
+  lhs:{Petal.L..Versicolor,Sepal.L..Virginica}, rhs:{Sepal.L..Setosa}, support:0.94, confidence:1, lift:1, 
+aso[64]
+  lhs:{Sepal.L..Setosa,Sepal.L..Virginica}, rhs:{Petal.L..Versicolor}, support:0.94, confidence:0.94, lift:1, 
+aso[65]
+  lhs:{Petal.L..Versicolor,Sepal.L..Versicolor}, rhs:{Sepal.L..Virginica}, support:0.94, confidence:1, lift:1, 
+aso[66]
+  lhs:{Petal.L..Versicolor,Sepal.L..Virginica}, rhs:{Sepal.L..Versicolor}, support:0.94, confidence:1, lift:1, 
+aso[67]
+  lhs:{Sepal.L..Versicolor,Sepal.L..Virginica}, rhs:{Petal.L..Versicolor}, support:0.94, confidence:0.94, lift:1, 
+aso[68]
+  lhs:{Petal.L..Virginica,Sepal.L..Setosa}, rhs:{Sepal.L..Versicolor}, support:1, confidence:1, lift:1, 
+aso[69]
+  lhs:{Petal.L..Virginica,Sepal.L..Versicolor}, rhs:{Sepal.L..Setosa}, support:1, confidence:1, lift:1, 
+aso[70]
+  lhs:{Sepal.L..Setosa,Sepal.L..Versicolor}, rhs:{Petal.L..Virginica}, support:1, confidence:1, lift:1, 
+aso[71]
+  lhs:{Petal.L..Virginica,Sepal.L..Setosa}, rhs:{Sepal.L..Virginica}, support:1, confidence:1, lift:1, 
+aso[72]
+  lhs:{Petal.L..Virginica,Sepal.L..Virginica}, rhs:{Sepal.L..Setosa}, support:1, confidence:1, lift:1, 
+aso[73]
+  lhs:{Sepal.L..Setosa,Sepal.L..Virginica}, rhs:{Petal.L..Virginica}, support:1, confidence:1, lift:1, 
+aso[74]
+  lhs:{Petal.L..Virginica,Sepal.L..Versicolor}, rhs:{Sepal.L..Virginica}, support:1, confidence:1, lift:1, 
+aso[75]
+  lhs:{Petal.L..Virginica,Sepal.L..Virginica}, rhs:{Sepal.L..Versicolor}, support:1, confidence:1, lift:1, 
+aso[76]
+  lhs:{Sepal.L..Versicolor,Sepal.L..Virginica}, rhs:{Petal.L..Virginica}, support:1, confidence:1, lift:1, 
+aso[77]
+  lhs:{Sepal.L..Setosa,Sepal.L..Versicolor}, rhs:{Sepal.L..Virginica}, support:1, confidence:1, lift:1, 
+aso[78]
+  lhs:{Sepal.L..Setosa,Sepal.L..Virginica}, rhs:{Sepal.L..Versicolor}, support:1, confidence:1, lift:1, 
+aso[79]
+  lhs:{Sepal.L..Versicolor,Sepal.L..Virginica}, rhs:{Sepal.L..Setosa}, support:1, confidence:1, lift:1, 
+aso[80]
+  lhs:{Petal.L..Versicolor,Petal.L..Virginica,Sepal.W..Setosa}, rhs:{Sepal.L..Setosa}, support:0.34, confidence:1, lift:1, 
+aso[81]
+  lhs:{Petal.L..Versicolor,Sepal.L..Setosa,Sepal.W..Setosa}, rhs:{Petal.L..Virginica}, support:0.34, confidence:1, lift:1, 
+aso[82]
+  lhs:{Petal.L..Virginica,Sepal.L..Setosa,Sepal.W..Setosa}, rhs:{Petal.L..Versicolor}, support:0.34, confidence:0.85, lift:0.904255, 
+aso[83]
+  lhs:{Petal.L..Versicolor,Petal.L..Virginica,Sepal.W..Setosa}, rhs:{Sepal.L..Versicolor}, support:0.34, confidence:1, lift:1, 
+aso[84]
+  lhs:{Petal.L..Versicolor,Sepal.L..Versicolor,Sepal.W..Setosa}, rhs:{Petal.L..Virginica}, support:0.34, confidence:1, lift:1, 
+aso[85]
+  lhs:{Petal.L..Virginica,Sepal.L..Versicolor,Sepal.W..Setosa}, rhs:{Petal.L..Versicolor}, support:0.34, confidence:0.85, lift:0.904255, 
+aso[86]
+  lhs:{Petal.L..Versicolor,Petal.L..Virginica,Sepal.W..Setosa}, rhs:{Sepal.L..Virginica}, support:0.34, confidence:1, lift:1, 
+aso[87]
+  lhs:{Petal.L..Versicolor,Sepal.L..Virginica,Sepal.W..Setosa}, rhs:{Petal.L..Virginica}, support:0.34, confidence:1, lift:1, 
+aso[88]
+  lhs:{Petal.L..Virginica,Sepal.L..Virginica,Sepal.W..Setosa}, rhs:{Petal.L..Versicolor}, support:0.34, confidence:0.85, lift:0.904255, 
+aso[89]
+  lhs:{Petal.L..Versicolor,Sepal.L..Setosa,Sepal.W..Setosa}, rhs:{Sepal.L..Versicolor}, support:0.34, confidence:1, lift:1, 
+aso[90]
+  lhs:{Petal.L..Versicolor,Sepal.L..Versicolor,Sepal.W..Setosa}, rhs:{Sepal.L..Setosa}, support:0.34, confidence:1, lift:1, 
+aso[91]
+  lhs:{Sepal.L..Setosa,Sepal.L..Versicolor,Sepal.W..Setosa}, rhs:{Petal.L..Versicolor}, support:0.34, confidence:0.85, lift:0.904255, 
+aso[92]
+  lhs:{Petal.L..Versicolor,Sepal.L..Setosa,Sepal.W..Setosa}, rhs:{Sepal.L..Virginica}, support:0.34, confidence:1, lift:1, 
+aso[93]
+  lhs:{Petal.L..Versicolor,Sepal.L..Virginica,Sepal.W..Setosa}, rhs:{Sepal.L..Setosa}, support:0.34, confidence:1, lift:1, 
+aso[94]
+  lhs:{Sepal.L..Setosa,Sepal.L..Virginica,Sepal.W..Setosa}, rhs:{Petal.L..Versicolor}, support:0.34, confidence:0.85, lift:0.904255, 
+aso[95]
+  lhs:{Petal.L..Versicolor,Sepal.L..Versicolor,Sepal.W..Setosa}, rhs:{Sepal.L..Virginica}, support:0.34, confidence:1, lift:1, 
+aso[96]
+  lhs:{Petal.L..Versicolor,Sepal.L..Virginica,Sepal.W..Setosa}, rhs:{Sepal.L..Versicolor}, support:0.34, confidence:1, lift:1, 
+aso[97]
+  lhs:{Sepal.L..Versicolor,Sepal.L..Virginica,Sepal.W..Setosa}, rhs:{Petal.L..Versicolor}, support:0.34, confidence:0.85, lift:0.904255, 
+aso[98]
+  lhs:{Petal.L..Virginica,Sepal.L..Setosa,Sepal.W..Setosa}, rhs:{Sepal.L..Versicolor}, support:0.4, confidence:1, lift:1, 
+aso[99]
+  lhs:{Petal.L..Virginica,Sepal.L..Versicolor,Sepal.W..Setosa}, rhs:{Sepal.L..Setosa}, support:0.4, confidence:1, lift:1, 
+aso[100]
+  lhs:{Sepal.L..Setosa,Sepal.L..Versicolor,Sepal.W..Setosa}, rhs:{Petal.L..Virginica}, support:0.4, confidence:1, lift:1, 
+aso[101]
+  lhs:{Petal.L..Virginica,Sepal.L..Setosa,Sepal.W..Setosa}, rhs:{Sepal.L..Virginica}, support:0.4, confidence:1, lift:1, 
+aso[102]
+  lhs:{Petal.L..Virginica,Sepal.L..Virginica,Sepal.W..Setosa}, rhs:{Sepal.L..Setosa}, support:0.4, confidence:1, lift:1, 
+aso[103]
+  lhs:{Sepal.L..Setosa,Sepal.L..Virginica,Sepal.W..Setosa}, rhs:{Petal.L..Virginica}, support:0.4, confidence:1, lift:1, 
+aso[104]
+  lhs:{Petal.L..Virginica,Sepal.L..Versicolor,Sepal.W..Setosa}, rhs:{Sepal.L..Virginica}, support:0.4, confidence:1, lift:1, 
+aso[105]
+  lhs:{Petal.L..Virginica,Sepal.L..Virginica,Sepal.W..Setosa}, rhs:{Sepal.L..Versicolor}, support:0.4, confidence:1, lift:1, 
+aso[106]
+  lhs:{Sepal.L..Versicolor,Sepal.L..Virginica,Sepal.W..Setosa}, rhs:{Petal.L..Virginica}, support:0.4, confidence:1, lift:1, 
+aso[107]
+  lhs:{Sepal.L..Setosa,Sepal.L..Versicolor,Sepal.W..Setosa}, rhs:{Sepal.L..Virginica}, support:0.4, confidence:1, lift:1, 
+aso[108]
+  lhs:{Sepal.L..Setosa,Sepal.L..Virginica,Sepal.W..Setosa}, rhs:{Sepal.L..Versicolor}, support:0.4, confidence:1, lift:1, 
+aso[109]
+  lhs:{Sepal.L..Versicolor,Sepal.L..Virginica,Sepal.W..Setosa}, rhs:{Sepal.L..Setosa}, support:0.4, confidence:1, lift:1, 
+aso[110]
+  lhs:{Petal.L..Versicolor,Petal.L..Virginica,Sepal.L..Setosa}, rhs:{Sepal.L..Versicolor}, support:0.94, confidence:1, lift:1, 
+aso[111]
+  lhs:{Petal.L..Versicolor,Petal.L..Virginica,Sepal.L..Versicolor}, rhs:{Sepal.L..Setosa}, support:0.94, confidence:1, lift:1, 
+aso[112]
+  lhs:{Petal.L..Versicolor,Sepal.L..Setosa,Sepal.L..Versicolor}, rhs:{Petal.L..Virginica}, support:0.94, confidence:1, lift:1, 
+aso[113]
+  lhs:{Petal.L..Virginica,Sepal.L..Setosa,Sepal.L..Versicolor}, rhs:{Petal.L..Versicolor}, support:0.94, confidence:0.94, lift:1, 
+aso[114]
+  lhs:{Petal.L..Versicolor,Petal.L..Virginica,Sepal.L..Setosa}, rhs:{Sepal.L..Virginica}, support:0.94, confidence:1, lift:1, 
+aso[115]
+  lhs:{Petal.L..Versicolor,Petal.L..Virginica,Sepal.L..Virginica}, rhs:{Sepal.L..Setosa}, support:0.94, confidence:1, lift:1, 
+aso[116]
+  lhs:{Petal.L..Versicolor,Sepal.L..Setosa,Sepal.L..Virginica}, rhs:{Petal.L..Virginica}, support:0.94, confidence:1, lift:1, 
+aso[117]
+  lhs:{Petal.L..Virginica,Sepal.L..Setosa,Sepal.L..Virginica}, rhs:{Petal.L..Versicolor}, support:0.94, confidence:0.94, lift:1, 
+aso[118]
+  lhs:{Petal.L..Versicolor,Petal.L..Virginica,Sepal.L..Versicolor}, rhs:{Sepal.L..Virginica}, support:0.94, confidence:1, lift:1, 
+aso[119]
+  lhs:{Petal.L..Versicolor,Petal.L..Virginica,Sepal.L..Virginica}, rhs:{Sepal.L..Versicolor}, support:0.94, confidence:1, lift:1, 
+aso[120]
+  lhs:{Petal.L..Versicolor,Sepal.L..Versicolor,Sepal.L..Virginica}, rhs:{Petal.L..Virginica}, support:0.94, confidence:1, lift:1, 
+aso[121]
+  lhs:{Petal.L..Virginica,Sepal.L..Versicolor,Sepal.L..Virginica}, rhs:{Petal.L..Versicolor}, support:0.94, confidence:0.94, lift:1, 
+aso[122]
+  lhs:{Petal.L..Versicolor,Sepal.L..Setosa,Sepal.L..Versicolor}, rhs:{Sepal.L..Virginica}, support:0.94, confidence:1, lift:1, 
+aso[123]
+  lhs:{Petal.L..Versicolor,Sepal.L..Setosa,Sepal.L..Virginica}, rhs:{Sepal.L..Versicolor}, support:0.94, confidence:1, lift:1, 
+aso[124]
+  lhs:{Petal.L..Versicolor,Sepal.L..Versicolor,Sepal.L..Virginica}, rhs:{Sepal.L..Setosa}, support:0.94, confidence:1, lift:1, 
+aso[125]
+  lhs:{Sepal.L..Setosa,Sepal.L..Versicolor,Sepal.L..Virginica}, rhs:{Petal.L..Versicolor}, support:0.94, confidence:0.94, lift:1, 
+aso[126]
+  lhs:{Petal.L..Virginica,Sepal.L..Setosa,Sepal.L..Versicolor}, rhs:{Sepal.L..Virginica}, support:1, confidence:1, lift:1, 
+aso[127]
+  lhs:{Petal.L..Virginica,Sepal.L..Setosa,Sepal.L..Virginica}, rhs:{Sepal.L..Versicolor}, support:1, confidence:1, lift:1, 
+aso[128]
+  lhs:{Petal.L..Virginica,Sepal.L..Versicolor,Sepal.L..Virginica}, rhs:{Sepal.L..Setosa}, support:1, confidence:1, lift:1, 
+aso[129]
+  lhs:{Sepal.L..Setosa,Sepal.L..Versicolor,Sepal.L..Virginica}, rhs:{Petal.L..Virginica}, support:1, confidence:1, lift:1, 
+aso[130]
+  lhs:{Petal.L..Versicolor,Petal.L..Virginica,Sepal.L..Setosa,Sepal.W..Setosa}, rhs:{Sepal.L..Versicolor}, support:0.34, confidence:1, lift:1, 
+aso[131]
+  lhs:{Petal.L..Versicolor,Petal.L..Virginica,Sepal.L..Versicolor,Sepal.W..Setosa}, rhs:{Sepal.L..Setosa}, support:0.34, confidence:1, lift:1, 
+aso[132]
+  lhs:{Petal.L..Versicolor,Sepal.L..Setosa,Sepal.L..Versicolor,Sepal.W..Setosa}, rhs:{Petal.L..Virginica}, support:0.34, confidence:1, lift:1, 
+aso[133]
+  lhs:{Petal.L..Virginica,Sepal.L..Setosa,Sepal.L..Versicolor,Sepal.W..Setosa}, rhs:{Petal.L..Versicolor}, support:0.34, confidence:0.85, lift:0.904255, 
+aso[134]
+  lhs:{Petal.L..Versicolor,Petal.L..Virginica,Sepal.L..Setosa,Sepal.W..Setosa}, rhs:{Sepal.L..Virginica}, support:0.34, confidence:1, lift:1, 
+aso[135]
+  lhs:{Petal.L..Versicolor,Petal.L..Virginica,Sepal.L..Virginica,Sepal.W..Setosa}, rhs:{Sepal.L..Setosa}, support:0.34, confidence:1, lift:1, 
+aso[136]
+  lhs:{Petal.L..Versicolor,Sepal.L..Setosa,Sepal.L..Virginica,Sepal.W..Setosa}, rhs:{Petal.L..Virginica}, support:0.34, confidence:1, lift:1, 
+aso[137]
+  lhs:{Petal.L..Virginica,Sepal.L..Setosa,Sepal.L..Virginica,Sepal.W..Setosa}, rhs:{Petal.L..Versicolor}, support:0.34, confidence:0.85, lift:0.904255, 
+aso[138]
+  lhs:{Petal.L..Versicolor,Petal.L..Virginica,Sepal.L..Versicolor,Sepal.W..Setosa}, rhs:{Sepal.L..Virginica}, support:0.34, confidence:1, lift:1, 
+aso[139]
+  lhs:{Petal.L..Versicolor,Petal.L..Virginica,Sepal.L..Virginica,Sepal.W..Setosa}, rhs:{Sepal.L..Versicolor}, support:0.34, confidence:1, lift:1, 
+aso[140]
+  lhs:{Petal.L..Versicolor,Sepal.L..Versicolor,Sepal.L..Virginica,Sepal.W..Setosa}, rhs:{Petal.L..Virginica}, support:0.34, confidence:1, lift:1, 
+aso[141]
+  lhs:{Petal.L..Virginica,Sepal.L..Versicolor,Sepal.L..Virginica,Sepal.W..Setosa}, rhs:{Petal.L..Versicolor}, support:0.34, confidence:0.85, lift:0.904255, 
+aso[142]
+  lhs:{Petal.L..Versicolor,Sepal.L..Setosa,Sepal.L..Versicolor,Sepal.W..Setosa}, rhs:{Sepal.L..Virginica}, support:0.34, confidence:1, lift:1, 
+aso[143]
+  lhs:{Petal.L..Versicolor,Sepal.L..Setosa,Sepal.L..Virginica,Sepal.W..Setosa}, rhs:{Sepal.L..Versicolor}, support:0.34, confidence:1, lift:1, 
+aso[144]
+  lhs:{Petal.L..Versicolor,Sepal.L..Versicolor,Sepal.L..Virginica,Sepal.W..Setosa}, rhs:{Sepal.L..Setosa}, support:0.34, confidence:1, lift:1, 
+aso[145]
+  lhs:{Sepal.L..Setosa,Sepal.L..Versicolor,Sepal.L..Virginica,Sepal.W..Setosa}, rhs:{Petal.L..Versicolor}, support:0.34, confidence:0.85, lift:0.904255, 
+aso[146]
+  lhs:{Petal.L..Virginica,Sepal.L..Setosa,Sepal.L..Versicolor,Sepal.W..Setosa}, rhs:{Sepal.L..Virginica}, support:0.4, confidence:1, lift:1, 
+aso[147]
+  lhs:{Petal.L..Virginica,Sepal.L..Setosa,Sepal.L..Virginica,Sepal.W..Setosa}, rhs:{Sepal.L..Versicolor}, support:0.4, confidence:1, lift:1, 
+aso[148]
+  lhs:{Petal.L..Virginica,Sepal.L..Versicolor,Sepal.L..Virginica,Sepal.W..Setosa}, rhs:{Sepal.L..Setosa}, support:0.4, confidence:1, lift:1, 
+aso[149]
+  lhs:{Sepal.L..Setosa,Sepal.L..Versicolor,Sepal.L..Virginica,Sepal.W..Setosa}, rhs:{Petal.L..Virginica}, support:0.4, confidence:1, lift:1, 
+aso[150]
+  lhs:{Petal.L..Versicolor,Petal.L..Virginica,Sepal.L..Setosa,Sepal.L..Versicolor}, rhs:{Sepal.L..Virginica}, support:0.94, confidence:1, lift:1, 
+aso[151]
+  lhs:{Petal.L..Versicolor,Petal.L..Virginica,Sepal.L..Setosa,Sepal.L..Virginica}, rhs:{Sepal.L..Versicolor}, support:0.94, confidence:1, lift:1, 
+aso[152]
+  lhs:{Petal.L..Versicolor,Petal.L..Virginica,Sepal.L..Versicolor,Sepal.L..Virginica}, rhs:{Sepal.L..Setosa}, support:0.94, confidence:1, lift:1, 
+aso[153]
+  lhs:{Petal.L..Versicolor,Sepal.L..Setosa,Sepal.L..Versicolor,Sepal.L..Virginica}, rhs:{Petal.L..Virginica}, support:0.94, confidence:1, lift:1, 
+aso[154]
+  lhs:{Petal.L..Virginica,Sepal.L..Setosa,Sepal.L..Versicolor,Sepal.L..Virginica}, rhs:{Petal.L..Versicolor}, support:0.94, confidence:0.94, lift:1, 
+aso[155]
+  lhs:{Petal.L..Versicolor,Petal.L..Virginica,Sepal.L..Setosa,Sepal.L..Versicolor,Sepal.W..Setosa}, rhs:{Sepal.L..Virginica}, support:0.34, confidence:1, lift:1, 
+aso[156]
+  lhs:{Petal.L..Versicolor,Petal.L..Virginica,Sepal.L..Setosa,Sepal.L..Virginica,Sepal.W..Setosa}, rhs:{Sepal.L..Versicolor}, support:0.34, confidence:1, lift:1, 
+aso[157]
+  lhs:{Petal.L..Versicolor,Petal.L..Virginica,Sepal.L..Versicolor,Sepal.L..Virginica,Sepal.W..Setosa}, rhs:{Sepal.L..Setosa}, support:0.34, confidence:1, lift:1, 
+aso[158]
+  lhs:{Petal.L..Versicolor,Sepal.L..Setosa,Sepal.L..Versicolor,Sepal.L..Virginica,Sepal.W..Setosa}, rhs:{Petal.L..Virginica}, support:0.34, confidence:1, lift:1, 
+aso[159]
+  lhs:{Petal.L..Virginica,Sepal.L..Setosa,Sepal.L..Versicolor,Sepal.L..Virginica,Sepal.W..Setosa}, rhs:{Petal.L..Versicolor}, support:0.34, confidence:0.85, lift:0.904255, 
